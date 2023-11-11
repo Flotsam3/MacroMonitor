@@ -1,0 +1,19 @@
+@use "../assets/variables" as var;
+
+.inputWrapper {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100vw;
+   height: 61vh;
+   background-image: url("../assets/images/halfCircle.svg");
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-position-y: -100px;
+   color: var.$font-light;
+   h1 {
+      font-family: 'Medula One', cursive;
+      font-size: clamp(1rem, 3vw, 5rem);
+      font-weight: 400;
+   }
+}

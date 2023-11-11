@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import cog from "../assets/images/cogwheel.png";
+import "./Navigation.module.scss";
 
 export default function Navigation() {
   return (

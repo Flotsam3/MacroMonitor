@@ -5,10 +5,31 @@ import dish from "../assets/images/balance-dish.png";
 import styles from "./Balance.module.scss";
 import Navigation from "../components/Navigation";
 import MacroCups from "../components/MacroCups";
+import ConsumptionPanel from "../components/ConsumptionPanel";
+
+interface MacroBalanceItem {
+  class: string;
+  title: string;
+  amount: number;
+  percent: string;
+}
+
+interface ConsumptionItem {
+  name: string;
+  grams: number;
+  kcal: number;
+  carbs: number;
+  fat: number;
+  protein: number;
+  satFat: number;
+  sugar: number;
+  salt: number;
+}
 
 
 export default function Balance() {
-  const [macroBalance, setMacroBalance] = useState([{class: "carbsWrapper", title: "Carbs", amount:450, percent:"95%"},{class: "fatWrapper", title: "Fat", amount:450, percent:"95%"},{class: "proteinWrapper", title: "Protein", amount:450, percent:"95%"},{class: "saturatedFatWrapper", title: "Sat. fat", amount:450, percent:"95%"},{class: "sugarWrapper", title: "Sugar", amount:450, percent:"95%"},{class: "saltWrapper", title: "Salt", amount:450, percent:"95%"},{class: "caloriesWrapper", title: "Calories", amount:450, percent:"95%"}]);
+  const [macroBalance, setMacroBalance] = useState<MacroBalanceItem[]>([{class: "carbsWrapper", title: "Carbs", amount:450, percent:"95%"},{class: "fatWrapper", title: "Fat", amount:450, percent:"95%"},{class: "proteinWrapper", title: "Protein", amount:450, percent:"95%"},{class: "saturatedFatWrapper", title: "Sat. fat", amount:450, percent:"95%"},{class: "sugarWrapper", title: "Sugar", amount:450, percent:"95%"},{class: "saltWrapper", title: "Salt", amount:450, percent:"95%"},{class: "caloriesWrapper", title: "Calories", amount:450, percent:"95%"}]);
+  const [consumption, setConsumption] = useState<ConsumptionItem[]>([{name:"Apple", grams:85, kcal:120, carbs: 45, fat:2, protein:1, satFat:0, sugar:15, salt:1}])
   return (
     <>
     <div className={styles.balance}>
@@ -24,128 +45,14 @@ export default function Balance() {
       <img className={styles.vector1} src={vector1} alt="curved background" ></img>
       <div className={styles.infoCircle}>
         {macroBalance.map((obj, index)=>(
-          <MacroCups key={index} styles={styles} cName={obj.class} title={obj.title} amount={obj.amount} percent={obj.percent}  />
+          <MacroCups key={index} data={obj}  />
         ))}
-        {/* <div className={styles.carbsWrapper}>
-          <div className={styles.textWrapper}>
-            <h3>Carbs</h3>
-            <span>450</span>
-          </div>
-          <div className={styles.cupWrapper}>
-            <div className={styles.textWrapper}>
-              <span>95%</span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.fatWrapper}>
-          <div className={styles.textWrapper}>
-            <h3>Fat</h3>
-            <span>450</span>
-          </div>
-          <div className={styles.cupWrapper}>
-            <div className={styles.textWrapper}>
-              <span>95%</span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.proteinWrapper}>
-          <div className={styles.textWrapper}>
-            <h3>Protein</h3>
-            <span>85</span>
-          </div>
-          <div className={styles.cupWrapper}>
-            <div className={styles.textWrapper}>
-              <span>95%</span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.saturatedFatWrapper}>
-          <div className={styles.textWrapper}>
-            <h3>Saturated</h3>
-            <h3>fat</h3>
-            <span>85</span>
-          </div>
-          <div className={styles.cupWrapper}>
-            <div className={styles.textWrapper}>
-              <span>95%</span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.sugarWrapper}>
-          <div className={styles.textWrapper}>
-            <h3>Sugar</h3>
-            <span>85</span>
-          </div>
-          <div className={styles.cupWrapper}>
-            <div className={styles.textWrapper}>
-              <span>95%</span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.saltWrapper}>
-          <div className={styles.textWrapper}>
-            <h3>Salt</h3>
-            <span>85</span>
-          </div>
-          <div className={styles.cupWrapper}>
-            <div className={styles.textWrapper}>
-              <span>95%</span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.caloriesWrapper}>
-          <div className={styles.textWrapper}>
-            <h3>Calories</h3>
-            <span>1850</span>
-          </div>
-          <div className={styles.cupWrapper}>
-            <div className={styles.textWrapper}>
-              <span>95%</span>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
       <h2>Consumption</h2>
-      <div className={styles.panelWrapper}>
-        <div className={styles.panel}>
-          <div className={styles.nameWrapper}>
-            <h4>Apfel</h4>
-            <p>78g</p>
-          </div>
-          <div className={styles.macrosWrapper}>
-            <div className={styles.singleMacroWrapper}>
-              <h5>Kcal</h5>
-              <p>54</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-              <h5>Carbs</h5>
-              <p>54</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-              <h5>Fat</h5>
-              <p>54</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-              <h5>Protein</h5>
-              <p>54</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-              <h5>Sat. fat</h5>
-              <p>54</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-              <h5>Sugar</h5>
-              <p>54</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-              <h5>Salt</h5>
-              <p>54</p>
-            </div>
-          </div>
-          <span className={styles.close}>x</span>
-        </div>
-      </div>
+      {consumption.map((obj, index)=>(
+        <ConsumptionPanel  key={index} data={obj}/>
+      ))}
     </>
   )
 }
