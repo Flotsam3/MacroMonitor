@@ -6,6 +6,7 @@ import styles from "./Balance.module.scss";
 import Navigation from "../components/Navigation";
 import MacroCups from "../components/MacroCups";
 import ConsumptionPanel from "../components/ConsumptionPanel";
+import Button from "../components/Button";
 
 type MacroBalanceItem = {
   class: string;
@@ -37,8 +38,8 @@ export default function Balance() {
       <div className={styles.headerContainer}>
         <h1>Daily intake</h1>
         <div className={styles.buttonWrapper}>
-          <button>Reset</button>
-          <button>Archivate<img src={orange} alt="orange" /></button>
+          <Button label="Reset" type="typeA"/>
+          <Button label="Archivate" type="typeB"><img src={orange} alt="orange" /></Button>
         </div>
         <img src={dish} alt="Dish on a plate" />
       </div>

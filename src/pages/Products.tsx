@@ -8,6 +8,7 @@ export default function Products() {
       <div className={styles.inputWrapper}>
         <Navigation />
         <NewFoodPanel />
+        <h2>Products</h2>
       </div>
     </div>
   )
