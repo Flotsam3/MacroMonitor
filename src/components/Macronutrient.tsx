@@ -1,4 +1,4 @@
-import styles from "../pages/Balance.module.scss";
+import styles from "./Macronutrient.module.scss";
 
 type MacronutrientProps = {
     label: string;
