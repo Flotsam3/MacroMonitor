@@ -1,0 +1,29 @@
+@use "../assets/variables" as var;
+
+button {
+    font-size: clamp(1rem, 1.3vw, 2.3rem);
+    color: var.$font-light;
+    border: none;
+    border-radius: 99vh;
+    transition: 0.7s background-color;
+    cursor: pointer;
+ }
+ button.typeA{
+    padding: 1em 3em;
+    background-color: var.$button-primary-1;
+ }
+ button.typeA:hover{
+    background-color: transparent;
+    color: var.$button-primary-1;
+    outline: 3px solid var.$button-primary-1;
+ }
+ button.typeB{
+    position: relative;
+    padding: 1em 2.22em;
+    background-color: var.$button-primary-2;
+ }
+ button.typeB:hover {
+    background-color: transparent;
+    color: var.$button-primary-2;
+    outline: 3px solid var.$button-primary-2;
+ }

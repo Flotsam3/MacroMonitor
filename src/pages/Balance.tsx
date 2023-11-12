@@ -7,14 +7,14 @@ import Navigation from "../components/Navigation";
 import MacroCups from "../components/MacroCups";
 import ConsumptionPanel from "../components/ConsumptionPanel";
 
-interface MacroBalanceItem {
+type MacroBalanceItem = {
   class: string;
   title: string;
   amount: number;
   percent: string;
 }
 
-interface ConsumptionItem {
+type ConsumptionItem = {
   name: string;
   grams: number;
   kcal: number;

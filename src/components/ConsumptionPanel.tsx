@@ -1,6 +1,7 @@
 import styles from "../pages/Balance.module.scss";
+import Macronutrient from "./Macronutrient";
 
-interface ConsumptionPanelProps {
+type ConsumptionPanelProps = {
    data: {
      name: string;
      grams: number;
@@ -23,34 +24,13 @@ export default function ConsumptionPanel({data}:ConsumptionPanelProps) {
             <p>{data.grams}</p>
          </div>
          <div className={styles.macrosWrapper}>
-            <div className={styles.singleMacroWrapper}>
-               <h5>Kcal</h5>
-               <p>{data.kcal}</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-               <h5>Carbs</h5>
-               <p>{data.carbs}</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-               <h5>Fat</h5>
-               <p>{data.fat}</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-               <h5>Protein</h5>
-               <p>{data.protein}</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-               <h5>Sat. fat</h5>
-               <p>{data.satFat}</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-               <h5>Sugar</h5>
-               <p>{data.sugar}</p>
-            </div>
-            <div className={styles.singleMacroWrapper}>
-               <h5>Salt</h5>
-               <p>{data.salt}</p>
-            </div>
+            <Macronutrient label={"Kcal"} value={data.kcal}/>
+            <Macronutrient label={"Carbs"} value={data.carbs}/>
+            <Macronutrient label={"Fat"} value={data.fat}/>
+            <Macronutrient label={"Protein"} value={data.protein}/>
+            <Macronutrient label={"Sat.fat"} value={data.satFat}/>
+            <Macronutrient label={"Sugar"} value={data.sugar}/>
+            <Macronutrient label={"Salt"} value={data.salt}/>
          </div>
          <span className={styles.close}>x</span>
       </div>
