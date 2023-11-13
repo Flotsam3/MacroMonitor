@@ -11,7 +11,7 @@
       align-items: center;
       width: 100%;
       max-width: 1800px;
-      // height: 61vh;
+      height: 61vh;
       background-image: url("../assets/images/halfCircle.svg");
       background-repeat: no-repeat;
       background-size: cover;
@@ -83,11 +83,85 @@
             margin-top: 4em;
          }
       }
-      h2 {
-         margin-top: 15vh;
-         font-size: clamp(1.3rem, 3vw, 3.5rem);
-         text-align: center;
-         color: var.$panel-bg-primary;
+   }
+   h2 {
+      font-size: clamp(1.3rem, 3vw, 3.5rem);
+      text-align: center;
+      color: var.$panel-bg-primary;
+   }
+   .addButtonWrapper {
+      display: flex;
+      justify-content: flex-end;
+      width: 50%;
+      padding: 1em 0;
+      button {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 2em;
+         width: 2em;
+         background-color: var.$panel-bg-primary;
+         font-size: 1.5rem;
+         transition: 0.5s ease-in;
+      }
+      button:hover {
+         background-color: #474654;
+         outline: 3px solid white;
+      }
+   }
+   .productPanelWrapper {
+      display: flex;
+      gap: 1em;
+      padding: 0.5em 1.5em;
+      background-color: var.$secondary-bg;
+      color: white;
+      border-radius: 10px;
+      .imageWrapper {
+         display: flex;
+         gap: 10px;
+         width: 70%;
+         .image {
+            width: 20%;
+            aspect-ratio: 1;
+            background-color: #474654;
+            border-radius: 5px;
+         }
+      }
+      .gramsWrapper {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         gap: 10px;
+         width: 5em;
+         input {
+            width: 2.7em;
+            padding: 0.4em 0.5em;
+            background-color: var.$primary-bg;
+            color: white;
+            text-align: center;
+            border-radius: 99vh;
+            border: none;
+            outline: none;
+         }
+         input:focus {
+            outline: 3px solid #474654;
+         }
+      }
+      .close {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 40px;
+         height: 20px;
+         background-color: var.$button-exit;
+         font-size: 0.7rem;
+         border-radius: 50%;
+         cursor: pointer;
+         transition: 0.5s ease-in;
+      }
+      .close:hover {
+         outline: 2px solid white;
       }
    }
 }

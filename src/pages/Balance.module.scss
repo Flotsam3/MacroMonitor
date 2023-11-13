@@ -137,14 +137,14 @@
    }
 }
 
-h2 {
+h2.consumption {
    margin-top: 15vh;
    font-size: clamp(1.3rem, 3vw, 3.5rem);
    text-align: center;
 }
 
 @media screen and (max-width:1700px) {
-   h2 {
+   h2.consumption {
       margin-top: 20vh;
    }
 }

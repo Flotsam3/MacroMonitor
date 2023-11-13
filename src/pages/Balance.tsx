@@ -50,7 +50,7 @@ export default function Balance() {
         ))}
       </div>
     </div>
-      <h2>Consumption</h2>
+      <h2 className={styles.consumption}>Consumption</h2>
       {consumption.map((obj, index)=>(
         <ConsumptionPanel  key={index} data={obj}/>
       ))}
