@@ -1,0 +1,22 @@
+@use "../assets/variables" as var;
+
+.valueWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    padding: 0.3em 0;
+    font-size: 1.5rem;
+    input {
+        width: 20%;
+        padding: 0.5em 1em;
+        background-color: #474654;
+        color: white;
+        text-align: center;
+        border: none;
+        border-radius: 99vh;
+        outline: none;
+     }
+     input:focus {
+        background-color: var.$primary-bg;
+     }
+}

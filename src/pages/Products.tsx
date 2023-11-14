@@ -2,6 +2,7 @@ import styles from "./Products.module.scss";
 import Navigation from "../components/Navigation";
 import NewFoodPanel from "../components/NewFoodPanel";
 import Macronutrient from "../components/Macronutrient";
+import banana from "../assets/images/banane_1.png";
 
 export default function Products() {
   return (
@@ -9,11 +10,8 @@ export default function Products() {
       <div className={styles.inputWrapper}>
         <Navigation />
         <NewFoodPanel />
+        <img className={styles.banana} src={banana} alt="A half peeled banana" />
       </div>
-        <h2>Products</h2>
-        <div className={styles.addButtonWrapper}>
-          <button>+</button>
-        </div>
         <div className={styles.productPanelWrapper}>
           <div className={styles.imageWrapper}>
             <p className={styles.image}></p>
@@ -31,6 +29,9 @@ export default function Products() {
             <input type="text" />
           </div>
           <span className={styles.close}>x</span>
+          <div className={styles.addButtonWrapper}>
+            <button>+</button>
+          </div>
         </div>
     </div>
   )

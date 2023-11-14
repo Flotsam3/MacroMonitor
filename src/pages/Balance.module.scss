@@ -4,7 +4,7 @@
    position: relative;
    .headerContainer {
       width: 50%;
-      margin: 7em 0 0 2em;
+      margin: 5em 0 0 2em;
       > img {
          position: absolute;
          top: 45vh;
@@ -22,7 +22,7 @@
          display: flex;
          justify-content: center;
          gap: 2em;
-         padding: 3em 0;
+         padding: 2em 0;
          button:last-of-type{
             img {
                position: absolute;
@@ -34,6 +34,10 @@
          }
       }
    }
+   @media screen and (max-width:1700px) {
+      .headerContainer {
+         margin-top: 2em;
+   }}
    .vector1 {
       position: absolute;
       top: 0;
@@ -140,12 +144,13 @@
 h2.consumption {
    margin-top: 15vh;
    font-size: clamp(1.3rem, 3vw, 3.5rem);
+   color: var.$panel-bg-primary;
    text-align: center;
 }
 
 @media screen and (max-width:1700px) {
    h2.consumption {
-      margin-top: 20vh;
+      margin-top: 30vh;
    }
 }
 
@@ -186,6 +191,9 @@ h2.consumption {
          font-size: 0.7rem;
          border-radius: 50%;
          cursor: pointer;
+      }
+      .close:hover {
+         outline: 2px solid white;
       }
    }
 }

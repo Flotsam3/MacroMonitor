@@ -1,0 +1,27 @@
+@use "../assets/variables" as var;
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var.$secondary-bg;
+    color: var.$font-light;
+    .navWrapper {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+    }
+    h1 {
+        text-align: center;
+        font-family: 'Medula One', cursive;
+        font-size: clamp(3.5rem, 4vw, 5.5rem);
+        font-weight: 400;
+    }
+    h2 {
+        margin: 2em;
+    }
+    .buttonWrapper {
+        margin-top: 2em;
+    }
+}
