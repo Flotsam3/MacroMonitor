@@ -15,8 +15,8 @@
         z-index: -1;
         img {
             position: absolute;
-            top: 15%;
-            right:15%;
+            top: 20%;
+            right:10%;
             width: 20%;
 
         }
@@ -36,7 +36,7 @@
     .panelWrapper {
         display: flex;
         gap: 1em;
-        margin-top: 13em;
+        margin-top: 15em;
         padding: 0.5em 1.5em;
         background-color: var.$secondary-bg;
         color: white;
