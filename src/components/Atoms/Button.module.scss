@@ -1,4 +1,4 @@
-@use "../assets/variables" as var;
+@use "../../assets/variables.scss" as var;
 
 button {
     font-size: clamp(1rem, 1.3vw, 2.3rem);

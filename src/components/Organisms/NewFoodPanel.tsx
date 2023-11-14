@@ -1,6 +1,6 @@
-import styles from "../pages/Products.module.scss";
-import MacronutrientInput from "./MacronutrientInput";
-import Button from "./Button";
+import styles from "./NewFoodPanel.module.scss";
+import MacronutrientInput from "../Molecules/MacronutrientInput";
+import Button from "../Atoms/Button";
 
 export default function NewFoodPanel() {
 

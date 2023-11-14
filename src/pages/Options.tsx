@@ -1,7 +1,7 @@
 import styles from "./Options.module.scss";
-import Navigation from "../components/Navigation";
-import OptionItem from "../components/OptionItem";
-import Button from "../components/Button";
+import Navigation from "../components/Organisms/Navigation";
+import OptionItem from "../components/Molecules/OptionItem";
+import Button from "../components/Atoms/Button";
 
 export default function Options() {
   return (

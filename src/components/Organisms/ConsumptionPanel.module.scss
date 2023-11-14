@@ -1,0 +1,45 @@
+@use "../../assets/variables" as var;
+
+.panelWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    .panel {
+       display: flex;
+       padding: 1em 1.5em;
+       background-color: var.$panel-bg-primary;
+       color: var.$font-light;
+       border-radius: 15px;
+       .nameWrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 10px;
+          width: 12em;
+          p {
+             width: 30%;
+             padding: 0.2em 1em;
+             background-color: #474654;
+             text-align: center;
+             border-radius: 99vh;
+          }
+       }
+       .macrosWrapper {
+          display: flex;
+       }
+       .close {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 20px;
+          height: 20px;
+          background-color: var.$button-exit;
+          font-size: 0.7rem;
+          border-radius: 50%;
+          cursor: pointer;
+       }
+       .close:hover {
+          outline: 2px solid white;
+       }
+    }
+ }

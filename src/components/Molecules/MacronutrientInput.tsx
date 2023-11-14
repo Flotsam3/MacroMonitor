@@ -1,5 +1,4 @@
-import styles from "../pages/Products.module.scss";
-
+import styles from "./MacronutrientInput.module.scss";
 type MacronutrientProps = {
     label: string;
 };

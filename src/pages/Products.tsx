@@ -1,7 +1,7 @@
 import styles from "./Products.module.scss";
-import Navigation from "../components/Navigation";
-import NewFoodPanel from "../components/NewFoodPanel";
-import Macronutrient from "../components/Macronutrient";
+import Navigation from "../components/Organisms/Navigation";
+import NewFoodPanel from "../components/Organisms/NewFoodPanel";
+import Macronutrient from "../components/Molecules/Macronutrient";
 import banana from "../assets/images/banane_1.png";
 
 export default function Products() {

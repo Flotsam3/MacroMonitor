@@ -1,0 +1,84 @@
+@use "../../assets/variables" as var;
+
+.carbsWrapper, .fatWrapper, .proteinWrapper, .saturatedFatWrapper, .sugarWrapper, .saltWrapper {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    aspect-ratio: 1;
+    .textWrapper {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       width: 80%;
+    }
+    .cupWrapper {
+       height: 56%;
+       background-image: url(../../assets/images/cup-left.svg);
+       background-repeat: no-repeat;
+       background-size: cover;
+       color: var.$font-light;
+       .textWrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 80%;
+          height: 100%;
+          font-size: 0.8rem;
+       }
+    }
+ }
+ .caloriesWrapper {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    aspect-ratio: 1;
+    .textWrapper {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       width: 100%;
+    }
+    .cupWrapper {
+       height: 53%;
+       background-image: url(../../assets/images/bowl.svg);
+       background-repeat: no-repeat;
+       background-size: cover;
+       color: var.$font-light;
+       .textWrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          font-size: 0.8rem;
+       }
+    }
+ }
+ .carbsWrapper {
+    top: 35%;
+    left: 10%;
+ }
+ .fatWrapper {
+    top: 55%;
+    left: 10%;
+ }
+ .proteinWrapper {
+    top: 72%;
+    left: 25%;
+ }
+ .saturatedFatWrapper {
+    top: 30%;
+    left: 55%;
+ }
+ .sugarWrapper {
+    top: 55%;
+    left: 65%;
+ }
+ .saltWrapper {
+    top: 75%;
+    left: 50%;
+ }
+ .caloriesWrapper {
+    top: 50%;
+    left: 34%
+ }

@@ -1,0 +1,17 @@
+.singleMacroWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 5em;
+    input {
+       width: 50%;
+       padding: 0.5em 1em;
+       background-color: #474654;
+       color: white;
+       text-align: center;
+       border: none;
+       border-radius: 99vh;
+    }
+ }

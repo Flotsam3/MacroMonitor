@@ -1,18 +1,9 @@
-import styles from "../pages/Balance.module.scss";
-import Macronutrient from "./Macronutrient";
+import styles from "./ConsumptionPanel.module.scss";
+import Macronutrient from "../Molecules/Macronutrient";
+import { ConsumptionItem } from "../../pages/Balance";
 
 type ConsumptionPanelProps = {
-   data: {
-     name: string;
-     grams: number;
-     kcal: number;
-     carbs: number;
-     fat: number;
-     protein: number;
-     satFat: number;
-     sugar: number;
-     salt: number;
-   };
+   data: ConsumptionItem;
 };
 
 export default function ConsumptionPanel({data}:ConsumptionPanelProps) {

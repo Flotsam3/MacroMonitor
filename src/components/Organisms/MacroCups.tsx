@@ -1,8 +1,13 @@
-import styles from "../pages/Balance.module.scss";
+import styles from "./MacroCups.module.scss";
+import { MacroItem } from "../../pages/Balance";
 
-export default function MacroCups({data}) {
+type MacroCupsProps = {
+   data: MacroItem;
+};
+
+export default function MacroCups({data}:MacroCupsProps) {
   return (
-   <div className={styles[data.class]}>
+   <div className={styles[data.wrapperClass]}>
       <div className={styles.textWrapper}>
          <h3>{data.title}</h3>
          <span>{data.amount}</span>

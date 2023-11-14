@@ -1,7 +1,7 @@
-import Navigation from "../components/Navigation";
+import Navigation from "../components/Organisms/Navigation";
 import styles from "./Archive.module.scss";
-import Button from "../components/Button";
-import Macronutrient from "../components/Macronutrient";
+import Button from "../components/Atoms/Button";
+import Macronutrient from "../components/Molecules/Macronutrient";
 import pasta from "../assets/images/nudeln_1.png"
 
 export default function Archive() {
