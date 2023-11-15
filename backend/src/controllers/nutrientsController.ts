@@ -4,8 +4,8 @@ import { Food } from "../models/nutrients";
 export const createFood = async(req:Request, res:Response) => {
     try {
         const food = new Food(req.body);
-        food.save();
-        res.status(201).json({msg:"Food created", food});
+        await food.save();
+        res.status(201).json({msg:"Food created", data: food});
     } catch (error) {
         res.status(500).send(error);
     };

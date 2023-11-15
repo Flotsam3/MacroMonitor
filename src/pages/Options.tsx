@@ -11,13 +11,13 @@ export default function Options() {
         </div>
         <h1>Options</h1>
         <h2>Limit values</h2>
-        <OptionItem label="Calories" />
-        <OptionItem label="Carbohydrates" />
-        <OptionItem label="Fat" />
-        <OptionItem label="Protein" />
-        <OptionItem label="Saturated fat" />
-        <OptionItem label="Sugar" />
-        <OptionItem label="Salt" />
+        <OptionItem label="Calories" placeholder="g" value={2000}/>
+        <OptionItem label="Carbohydrates"placeholder="%" value={2000}/>
+        <OptionItem label="Fat" placeholder="%" value={2000}/>
+        <OptionItem label="Protein" placeholder="%" value={2000}/>
+        <OptionItem label="Saturated fat" placeholder="%" value={2000}/>
+        <OptionItem label="Sugar" placeholder="%" value={2000}/>
+        <OptionItem label="Salt" placeholder="g" value={10}/>
         <div className={styles.buttonWrapper}>
             <Button label="Save" type="typeB"/>
         </div>

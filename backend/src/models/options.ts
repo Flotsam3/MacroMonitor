@@ -11,13 +11,13 @@ type Options = {
 }
 
 const optionsSchema = new Schema({
-    calories:{type:Number, required:true, default:2000},
-    carbohydrates:{type:Number, required:true, default:0.55},
-    fat:{type:Number, required:true, default:0.3},
-    protein:{type:Number, required:true, default:0.15},
-    saturatedFat:{type:Number, required:true, default:0.1},
-    sugar:{type:Number, required:true, default:0.1},
-    salt:{type:Number, required:true, default: 6}
+    calories:{type:Number, default:2000},
+    carbohydrates:{type:Number, default:0.55},
+    fat:{type:Number, default:0.3},
+    protein:{type:Number, default:0.15},
+    saturatedFat:{type:Number, default:0.1},
+    sugar:{type:Number, default:0.1},
+    salt:{type:Number, default: 6}
 });
 
 optionsSchema.pre('save', function(next) {

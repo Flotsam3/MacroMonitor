@@ -1,10 +1,10 @@
 import { Router } from "express";
 import * as food from "../controllers/nutrientsController";
 
-const router = Router();
+const foodRouter = Router();
 
-router
+foodRouter
     .post("/food", food.createFood)
     .get("/food", food.getAllFood)
 
-export default router;
+export default foodRouter;
