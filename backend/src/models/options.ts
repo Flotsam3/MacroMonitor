@@ -8,7 +8,7 @@ type Options = {
     saturatedFat:number,
     sugar:number,
     salt:number
-}
+};
 
 const optionsSchema = new Schema({
     calories:{type:Number, default:2000},

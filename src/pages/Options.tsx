@@ -1,9 +1,28 @@
+import { useEffect } from "react";
 import styles from "./Options.module.scss";
 import Navigation from "../components/Organisms/Navigation";
 import OptionItem from "../components/Molecules/OptionItem";
 import Button from "../components/Atoms/Button";
+import { getAllOptions, createOptions } from "../services/apt";
+
+const postOptions = async(payload:object)=>{
+  await createOptions(payload);
+};
+
+const getOptions = async()=>{
+  const optionsData = await getAllOptions();
+  console.log({optionsData});
+  if (optionsData.length === 0){
+    const response = await postOptions({calories:2000});
+    console.log({response});
+  }
+};
 
 export default function Options() {
+  useEffect(() => {
+      getOptions();
+  }, []);
+
   return (
     <div className={styles.options}>
         <div className={styles.navWrapper}>
