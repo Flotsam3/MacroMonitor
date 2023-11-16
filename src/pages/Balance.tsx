@@ -9,27 +9,28 @@ import ConsumptionPanel from "../components/Organisms/ConsumptionPanel";
 import Button from "../components/Atoms/Button";
 
 export type MacroItem = {
-  wrapperClass: "carbsWrapper" | "fatWrapper" | "proteinWrapper" | "saturatedFatWrapper" | "sugarWrapper" | "saltWrapper" | "caloriesWrapper";
-  title: string;
-  amount: number;
-  percent: string;
+  wrapperClass: "carbsWrapper" | "fatWrapper" | "proteinWrapper" | "saturatedFatWrapper" | "sugarWrapper" | "saltWrapper" | "caloriesWrapper"
+  title: string
+  amount: number
+  percent: string
 }
 
 export type ConsumptionItem = {
-  name: string;
-  grams: number;
-  kcal: number;
-  carbs: number;
-  fat: number;
-  protein: number;
-  satFat: number;
-  sugar: number;
-  salt: number;
+  name: string
+  grams: number
+  kcal: number
+  carbs: number
+  fat: number
+  protein: number
+  satFat: number
+  sugar: number
+  salt: number
 }
 
 export default function Balance() {
   const [macroBalance, setMacroBalance] = useState<MacroItem[]>([{wrapperClass: "carbsWrapper", title: "Carbs", amount:450, percent:"95%"},{wrapperClass: "fatWrapper", title: "Fat", amount:450, percent:"95%"},{wrapperClass: "proteinWrapper", title: "Protein", amount:450, percent:"95%"},{wrapperClass: "saturatedFatWrapper", title: "Sat. fat", amount:450, percent:"95%"},{wrapperClass: "sugarWrapper", title: "Sugar", amount:450, percent:"95%"},{wrapperClass: "saltWrapper", title: "Salt", amount:450, percent:"95%"},{wrapperClass: "caloriesWrapper", title: "Calories", amount:450, percent:"95%"}]);
   const [consumption, setConsumption] = useState<ConsumptionItem[]>([{name:"Apple", grams:85, kcal:120, carbs: 45, fat:2, protein:1, satFat:0, sugar:15, salt:1}])
+
   return (
     <>
     <div className={styles.balance}>

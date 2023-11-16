@@ -6,8 +6,8 @@ export default function Navigation() {
   return (
    <nav>
       <ul>
-         <li><Link to="/">Balance</Link></li>
-         <li><Link to="/products">Products</Link></li>
+         <li><Link to="/balance">Balance</Link></li>
+         <li><Link to="/">Products</Link></li>
          <li><Link to="/archive">Archive</Link></li>
          <li><Link className={styles.cogwheel} to="/options"><img className={styles.cog} src={cog} alt="cog wheel icon" /></Link></li>
       </ul>

@@ -1,12 +1,12 @@
 import {Schema, model} from "mongoose";
 
 type Options = {
-    calories:number,
-    carbohydrates:number,
-    fat:number,
-    protein:number,
-    saturatedFat:number,
-    sugar:number,
+    calories:number
+    carbohydrates:number
+    fat:number
+    protein:number
+    saturatedFat:number
+    sugar:number
     salt:number
 };
 

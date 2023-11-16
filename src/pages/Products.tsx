@@ -1,10 +1,47 @@
+import { useState, useEffect, useContext } from "react";
 import styles from "./Products.module.scss";
 import Navigation from "../components/Organisms/Navigation";
 import NewFoodPanel from "../components/Organisms/NewFoodPanel";
 import Macronutrient from "../components/Molecules/Macronutrient";
 import banana from "../assets/images/banane_1.png";
+import { getAllOptions, createOptions } from "../services/api";
+import { OptionContext } from "../context/OptionContext";
+
+export type Options = {
+  calories:number
+  carbohydrates:number
+  fat:number
+  protein:number
+  saturatedFat:number
+  sugar:number
+  salt:number
+}
 
 export default function Products() {
+  const [options, setOptions] = useState<Options>({calories:0, carbohydrates:0, fat:0, protein:0, saturatedFat:0, sugar:0, salt:0});
+
+  const fromContext = useContext(OptionContext);
+  console.log({fromContext});
+  
+
+  useEffect(()=>{
+    const fetchOptions = async() =>{
+      const initialFetch = await getAllOptions();
+      if (initialFetch.length > 0){
+        setOptions(()=>initialFetch[0]);
+      } else {
+        const optionsData = await createOptions({calories:2000});
+        setOptions(()=> optionsData.data)
+      }
+    };
+    return ()=>{
+      fetchOptions();
+    };
+  },[]);
+
+  useEffect(()=>{
+    console.log({options});
+  },[options])
   return (
     <div className={styles.products}>
       <div className={styles.inputWrapper}>
