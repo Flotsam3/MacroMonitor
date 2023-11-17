@@ -13,7 +13,7 @@ export default function Archive() {
           <Navigation />
           <h1>Archive</h1>
           <div className={styles.buttonWrapper}>
-            <Button label="Reset" type="typeA" />
+            <Button label="Reset" appearance="typeA" />
           </div>
         <div className={styles.panelWrapper}>
           <div className={styles.dateWrapper}>

@@ -38,8 +38,8 @@ export default function Balance() {
       <div className={styles.headerContainer}>
         <h1>Daily intake</h1>
         <div className={styles.buttonWrapper}>
-          <Button label="Reset" type="typeA"/>
-          <Button label="Archivate" type="typeB"><img src={orange} alt="orange" /></Button>
+          <Button label="Reset" appearance="typeA"/>
+          <Button label="Archivate" appearance="typeB"><img src={orange} alt="orange" /></Button>
         </div>
         <img src={dish} alt="Dish on a plate" />
       </div>

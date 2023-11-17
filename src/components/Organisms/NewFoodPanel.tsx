@@ -23,8 +23,8 @@ export default function NewFoodPanel() {
           </div>
       </div>
       <div className={styles.buttonWrapper}>
-        <Button label={"Add to list"} type={"typeA"} />
-        <Button label={"Create menu"} type={"typeB"} />
+        <Button label={"Add to list"} appearance={"typeA"} />
+        <Button label={"Create menu"} appearance={"typeB"} />
       </div>
     </div>
   )
