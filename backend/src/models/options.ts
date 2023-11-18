@@ -22,11 +22,11 @@ const optionsSchema = new Schema({
 
 optionsSchema.pre('save', function(next) {
     if (this.calories) {
-        this.carbohydrates = Math.round((this.calories * this.carbohydrates) / 4); // 1 gram of carbs = 4 calories
-        this.fat = Math.round((this.calories * this.fat) / 9); // 1 gram of fat = 9 calories
-        this.protein = Math.round((this.calories * this.protein) / 4); // 1 gram of protein = 4 calories
-        this.saturatedFat = Math.round((this.calories * this.saturatedFat) / 9); // belongs to fat
-        this.sugar = Math.round((this.calories * this.sugar) / 4); // belongs to carbs
+        this.carbohydrates = Math.round((+this.calories * +this.carbohydrates) / 4); // 1 gram of carbs = 4 calories
+        this.fat = Math.round((+this.calories * +this.fat) / 9); // 1 gram of fat = 9 calories
+        this.protein = Math.round((+this.calories * +this.protein) / 4); // 1 gram of protein = 4 calories
+        this.saturatedFat = Math.round((+this.calories * +this.saturatedFat) / 9); // belongs to fat
+        this.sugar = Math.round((+this.calories * +this.sugar) / 4); // belongs to carbs
     }
     next();
 });
