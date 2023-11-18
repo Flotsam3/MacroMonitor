@@ -6,24 +6,38 @@ import Button from "../components/Atoms/Button";
 import { OptionContext } from "../context/OptionContext";
 import { InputOptionTypes } from "../components/Molecules/OptionItem";
 import { Nutrient } from "../components/Molecules/OptionItem";
+import { updateOptions } from "../services/api";
 
 export default function Options() {
-  const {options} = useContext(OptionContext);
+  const {options, setOptionsData} = useContext(OptionContext);
   const [optionsInput, setOptionsInput] = useState<InputOptionTypes>({calories:0, carbohydrates:0, fat:0, protein:0, saturatedFat:0, sugar:0, salt:0});
   const [validationError, setValidationError] = useState<String>("");
   
-  function handleClick(){
-    console.log({optionsInput});
+  async function handleClick(){
     setValidationError("");
-    if (optionsInput.calories <= 100) return setValidationError("Calories must have a value greater than 100!");
-    console.log("level 1");
-    if (optionsInput.carbohydrates > 0 || optionsInput.fat > 0 || optionsInput.protein > 0){
-      console.log("level 2", optionsInput.carbohydrates + optionsInput.fat + optionsInput.protein);
-      if (+optionsInput.carbohydrates + +optionsInput.fat + +optionsInput.protein !== 1) return setValidationError("Carbs, fat and protein must equal to the amount of 1!");
-    };
-    if (optionsInput.saturatedFat > optionsInput.fat) return setValidationError("Saturated fat cannot be higher then fat!");
-    if (optionsInput.sugar > optionsInput.carbohydrates) return setValidationError("Sugar cannot be higher than carbohydrates!");
+    const response = validateInput();
+    console.log(optionsInput.carbohydrates);
+    
+    if (response?.valid === true) {
+      const data = await updateOptions({...optionsInput, id:options?._id});
+      if (setOptionsData){
+        setOptionsData(data?.data);
+      }
+      console.log({data});
+    }
   };
+
+  function validateInput(){
+    if (optionsInput.calories == ("" || 0) || optionsInput.carbohydrates == ("" || 0) || optionsInput.fat == ("" || 0) || optionsInput.protein == ("" || 0) || optionsInput.saturatedFat == ("" || 0) || optionsInput.sugar == ("" || 0) || optionsInput.salt == ("" || 0) ) return {valid:false, msg:setValidationError("All fields must have a value greater than 0!")};
+    if (optionsInput.calories <= 100) return {valid:false, msg:setValidationError("Calories must have a value greater than 100!")};
+    if (optionsInput.carbohydrates > 0 || optionsInput.fat > 0 || optionsInput.protein > 0){
+      if (+optionsInput.carbohydrates + +optionsInput.fat + +optionsInput.protein !== 1) return {valid:false, msg:setValidationError("Carbs, fat and protein must equal to the amount of 1!")};
+    };
+    if (optionsInput.saturatedFat > optionsInput.fat) return {valid:false, msg:setValidationError("Saturated fat cannot be higher then fat!")};
+    if (optionsInput.sugar > optionsInput.carbohydrates) return {valid:false, msg:setValidationError("Sugar cannot be higher than carbohydrates!")};
+    return {valid:true}
+  };
+
   return (
     <div className={styles.options}>
         <div className={styles.navWrapper}>
@@ -44,4 +58,4 @@ export default function Options() {
         </div>
     </div>
   )
-}
+};

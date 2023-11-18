@@ -15,7 +15,7 @@ export type Options = {
   saturatedFat:number
   sugar:number
   salt:number
-}
+};
 
 export default function Products() {
   const {options, setOptionsData} = useContext(OptionContext) || {};

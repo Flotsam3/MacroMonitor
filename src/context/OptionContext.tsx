@@ -1,6 +1,7 @@
 import {ReactNode, SetStateAction, Dispatch, createContext, useState} from "react";
 
 export type Options = {
+    _id:string
     calories:number
     carbohydrates:number
     fat:number
@@ -12,8 +13,8 @@ export type Options = {
 
 type OptionsContext = {
     options:Options
-    setOptionsData:Dispatch<SetStateAction<Options>> // <Options> referrs to the options field above
-}
+    setOptionsData:Dispatch<SetStateAction<Options>> // <Options> refers to the options field above
+};
 
 type OptionProvideProps = {
     children:ReactNode
@@ -23,10 +24,10 @@ export const OptionContext = createContext<Partial<OptionsContext>>({});
 
 
 export default function OptionsProvider({children}:OptionProvideProps){
-    const [optionsData, setOptionsData] = useState<Options>({calories:0, carbohydrates:0, fat:0, protein:0, saturatedFat:0, sugar:0, salt:0})
+    const [optionsData, setOptionsData] = useState<Options>({_id: "", calories:0, carbohydrates:0, fat:0, protein:0, saturatedFat:0, sugar:0, salt:0})
     return (
         <OptionContext.Provider value={{options:optionsData, setOptionsData}}>
         {children}
         </OptionContext.Provider>
     )
-}
+};
