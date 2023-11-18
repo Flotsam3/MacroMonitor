@@ -2,13 +2,13 @@ import { useState } from "react";
 import styles from "./OptionItem.module.scss";
 
 export type InputOptionTypes = {
-  calories:number | string
-  carbohydrates:number | string
-  fat:number | string
-  protein:number | string
-  saturatedFat:number | string
-  sugar:number | string
-  salt:number | string
+  calories:number 
+  carbohydrates:number
+  fat:number
+  protein:number
+  saturatedFat:number
+  sugar:number
+  salt:number
 }
 
 type OptionProps = {
