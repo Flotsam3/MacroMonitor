@@ -17,11 +17,17 @@ export const createOptions = async(req:Request, res:Response) => {
 
 export const updateOptions = async(req:Request, res:Response) => {
     try {
-        const {calories, carbohydrates, fat, protein, saturatedFat, sugar, salt} = req.body;
-        const response = Options.findOneAndUpdate({calories:req.body.calories}, {calories, carbohydrates, fat, protein, saturatedFat, sugar, salt}, {new:true});
+        const {id, calories, salt} = req.body;
+        const carbohydrates = Math.round((req.body.calories * req.body.carbohydrates) / 4); // 1 gram of carbs = 4 calories
+        const fat = Math.round((req.body.calories * req.body.fat) / 9); // 1 gram of fat = 9 calories
+        const protein = Math.round((req.body.calories * req.body.protein) / 4); // 1 gram of protein = 4 calories
+        const saturatedFat = Math.round((req.body.calories * req.body.saturatedFat) / 9); // belongs to fat
+        const sugar = Math.round((req.body.calories * req.body.sugar) / 4); // belongs to carbs
+        
+        const response = await Options.findByIdAndUpdate(id, {calories, carbohydrates, fat, protein, saturatedFat, sugar, salt}, {new:true});
         res.status(200).json({msg:"Options updated", data:response});
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).send(error);    
     };
 };
 
