@@ -2,8 +2,8 @@ import {Schema, model} from "mongoose";
 
 type FoodItem = {
     name:string,
-    kcal:number,
-    carbs:number,
+    calories:number,
+    carbohydrates:number,
     fat:number,
     protein:number,
     saturatedFat:number,
@@ -13,8 +13,8 @@ type FoodItem = {
 
 const foodSchema = new Schema({
     name:{type:String, required:true, unique:true},
-    kcal:{type:Number, required:true},
-    carbs:{type:Number, required:true},
+    calories:{type:Number, required:true},
+    carbohydrates:{type:Number, required:true},
     fat:{type:Number, required:true},
     protein:{type:Number, required:true},
     saturatedFat:{type:Number, required:true},

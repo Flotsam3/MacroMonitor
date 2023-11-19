@@ -25,3 +25,19 @@ export const getAllOptions = async()=>{
     const data = await response.json();
     return data;
 };
+
+export const createFood = async(payload:object)=>{
+    const response = await fetch(URL + "/food",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify(payload)
+    });
+    const data = await response.json();
+    return data;
+};
+
+export const getAllFood = async()=>{
+    const response = await fetch(URL + "/food");
+    const data = await response.json();
+    return data;
+};
