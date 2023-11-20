@@ -13,6 +13,8 @@ export default function NewFoodPanel() {
   function handleChange(evt:React.ChangeEvent<HTMLInputElement>){
     const name = evt.target.name;
     const value = evt.target.value;
+    console.log({name, value});
+    
     setInputValue({...inputValue, [name]:value});
   };
 
@@ -32,7 +34,7 @@ export default function NewFoodPanel() {
       <div className={styles.panel}>
           <div className={styles.nameWrapper}>
               <h4>{"Name"}</h4>
-              <input type="text" name="name" onChange={handleChange}/>
+              <input type="text" name="name" value={inputValue.name} onChange={handleChange}/>
           </div>
           <div className={styles.macrosWrapper}>
             <MacronutrientInput label={"Kcal"} name={Nutrient.Calories} value={inputValue.calories} onChangeHandler={handleChange} />

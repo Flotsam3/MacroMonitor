@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { Food } from "../models/nutrients";
 
 export const createFood = async(req:Request, res:Response) => {
+    console.log("body", req.body);
+    
     try {
         const food = new Food(req.body);
         await food.save();

@@ -24,11 +24,29 @@
          right: 10%;
       }
    }
+   .addButtonWrapper {
+      display: flex;
+      justify-content: center;
+      width: 50%;
+      button {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 2em;
+         width: 2em;
+         background-color: var.$panel-bg-primary;
+         font-size: 1.5rem;
+      }
+      button:hover {
+         background-color: #474654;
+         outline: 3px solid white;
+      }
+   }
    .productPanelWrapper {
       position: relative;
       display: flex;
       gap: 1em;
-      margin-top: 2em;
+      margin-top: 0.5em;
       padding: 0.5em 1.5em;
       background-color: var.$secondary-bg;
       color: white;
@@ -36,9 +54,9 @@
       .imageWrapper {
          display: flex;
          gap: 10px;
-         width: 70%;
+         width: 15em;
          .image {
-            width: 20%;
+            width: 3.5em;
             aspect-ratio: 1;
             background-color: #474654;
             border-radius: 5px;
@@ -69,7 +87,7 @@
          display: flex;
          justify-content: center;
          align-items: center;
-         width: 40px;
+         width: 20px;
          height: 20px;
          background-color: var.$button-exit;
          font-size: 0.7rem;
@@ -78,28 +96,6 @@
       }
       .close:hover {
          outline: 2px solid white;
-      }
-      .addButtonWrapper {
-         position: absolute;
-         top: -100%;
-         right: 0;
-         display: flex;
-         justify-content: flex-end;
-         width: 50%;
-         padding: 1em 0;
-         button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 2em;
-            width: 2em;
-            background-color: var.$panel-bg-primary;
-            font-size: 1.5rem;
-         }
-         button:hover {
-            background-color: #474654;
-            outline: 3px solid white;
-         }
       }
    }
 }
