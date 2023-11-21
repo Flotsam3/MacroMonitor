@@ -1,9 +1,9 @@
 import styles from "./ConsumptionPanel.module.scss";
 import Macronutrient from "../Molecules/Macronutrient";
-import { ConsumptionItem } from "../../pages/Balance";
+import { Options } from "../../context/OptionContext";
 
 type ConsumptionPanelProps = {
-   data: ConsumptionItem;
+   data: Options;
 };
 
 export default function ConsumptionPanel({data}:ConsumptionPanelProps) {
@@ -15,11 +15,11 @@ export default function ConsumptionPanel({data}:ConsumptionPanelProps) {
             <p>{data.grams}</p>
          </div>
          <div className={styles.macrosWrapper}>
-            <Macronutrient label={"Kcal"} value={data.kcal}/>
-            <Macronutrient label={"Carbs"} value={data.carbs}/>
+            <Macronutrient label={"Kcal"} value={data.calories}/>
+            <Macronutrient label={"Carbs"} value={data.carbohydrates}/>
             <Macronutrient label={"Fat"} value={data.fat}/>
             <Macronutrient label={"Protein"} value={data.protein}/>
-            <Macronutrient label={"Sat.fat"} value={data.satFat}/>
+            <Macronutrient label={"Sat.fat"} value={data.saturatedFat}/>
             <Macronutrient label={"Sugar"} value={data.sugar}/>
             <Macronutrient label={"Salt"} value={data.salt}/>
          </div>

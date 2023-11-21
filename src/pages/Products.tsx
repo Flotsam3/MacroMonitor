@@ -5,24 +5,14 @@ import NewFoodPanel from "../components/Organisms/NewFoodPanel";
 import Macronutrient from "../components/Molecules/Macronutrient";
 import banana from "../assets/images/banane_1.png";
 import { getAllOptions, createOptions, getAllFood } from "../services/api";
-import { OptionContext } from "../context/OptionContext";
-
-export type Options = {
-  calories:number
-  carbohydrates:number
-  fat:number
-  protein:number
-  saturatedFat:number
-  sugar:number
-  salt:number
-};
+import { OptionContext, Options } from "../context/OptionContext";
 
 type SelectedFood = {
   [key: string]: string;
 };
 
 export default function Products() {
-  const {options, setOptionsData, food, setFoodData} = useContext(OptionContext) || {};
+  const {setOptionsData, food, setFoodData, setConsumptionData} = useContext(OptionContext) || {};
   const [selectedFood, setSelectedFood] = useState<SelectedFood>({});
   
   useEffect(()=>{
@@ -69,6 +59,23 @@ export default function Products() {
     };
   };
 
+  function handleSaveSelection(){
+    const dailyConsumption:Options[] = [];
+    for (const key in selectedFood) {
+      food?.find((foodItem)=>{
+          const amount = +selectedFood[key]/100;
+          if (foodItem.name === key ){
+            const selectionData = {name:key, grams:amount * 100, calories:amount * foodItem.calories, carbohydrates:amount * foodItem.carbohydrates, fat:amount * foodItem.fat, protein:amount * foodItem.protein, saturatedFat:amount * foodItem.saturatedFat, sugar:amount * foodItem.sugar, salt:amount * foodItem.salt};
+            dailyConsumption.push(selectionData);
+          };
+      });
+    };
+    if (setConsumptionData){
+      setConsumptionData(dailyConsumption);
+      console.log({dailyConsumption});
+    };
+  };
+
   return (
     <div className={styles.products}>
         <div className={styles.inputWrapper}>
@@ -77,7 +84,7 @@ export default function Products() {
           <img className={styles.banana} src={banana} alt="A half peeled banana" />
         </div>
         <div className={styles.addButtonWrapper}>
-          <button>+</button>
+          {food && food?.length > 0 && <button onClick={handleSaveSelection}>+</button>}
         </div>
         {food && food.map((food, index)=>(
           <div key={index} className={styles.productPanelWrapper}>

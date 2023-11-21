@@ -10,6 +10,7 @@ export type Options = {
     saturatedFat:number
     sugar:number
     salt:number
+    grams?:number
 };
 
 type OptionsContext = {
@@ -17,6 +18,8 @@ type OptionsContext = {
     setOptionsData:Dispatch<SetStateAction<Options>> // <Options> refers to the options field above
     food: Options[]
     setFoodData:Dispatch<SetStateAction<Options[]>>
+    consumption:Options[]
+    setConsumptionData:Dispatch<SetStateAction<Options[]>>
 };
 
 type OptionProvideProps = {
@@ -29,8 +32,9 @@ export const OptionContext = createContext<Partial<OptionsContext>>({});
 export default function OptionsProvider({children}:OptionProvideProps){
     const [optionsData, setOptionsData] = useState<Options>({_id: "", calories:0, carbohydrates:0, fat:0, protein:0, saturatedFat:0, sugar:0, salt:0});
     const [foodData, setFoodData] = useState<Options[]>([]);
+    const [consumptionData, setConsumptionData] = useState<Options[]>([]);
     return (
-        <OptionContext.Provider value={{options:optionsData, setOptionsData, food:foodData, setFoodData}}>
+        <OptionContext.Provider value={{options:optionsData, setOptionsData, food:foodData, setFoodData, consumption:consumptionData, setConsumptionData}}>
         {children}
         </OptionContext.Provider>
     )
