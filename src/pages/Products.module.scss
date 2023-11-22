@@ -5,14 +5,15 @@
    flex-direction: column;
    align-items: center;
    width: 100vw;
+   padding-bottom: 2em;
    .inputWrapper {
-      position: relative;
+      position: fixed;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
       max-width: 1800px;
-      height: 61vh;
+      height: 57vh;
       background-image: url("../assets/images/halfCircle.svg");
       background-repeat: no-repeat;
       background-size: cover;
@@ -23,79 +24,83 @@
          top:15%;
          right: 10%;
       }
-   }
-   .addButtonWrapper {
-      display: flex;
-      justify-content: center;
-      width: 50%;
-      button {
+      .addButtonWrapper {
          display: flex;
          justify-content: center;
-         align-items: center;
-         height: 2em;
-         width: 2em;
-         background-color: var.$panel-bg-primary;
-         font-size: 1.5rem;
-      }
-      button:hover {
-         background-color: #474654;
-         outline: 3px solid white;
-      }
-   }
-   .productPanelWrapper {
-      position: relative;
-      display: flex;
-      gap: 1em;
-      margin-top: 0.5em;
-      padding: 0.5em 1.5em;
-      background-color: var.$secondary-bg;
-      color: white;
-      border-radius: 10px;
-      .imageWrapper {
-         display: flex;
-         gap: 10px;
-         width: 15em;
-         .image {
-            width: 3.5em;
-            aspect-ratio: 1;
+         width: 50%;
+         margin-top: 3em;
+         button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 2em;
+            width: 2em;
+            background-color: var.$panel-bg-primary;
+            border: 2px solid white;
+            font-size: 1.5rem;
+         }
+         button:hover {
             background-color: #474654;
-            border-radius: 5px;
+            outline: 3px solid white;
          }
       }
-      .gramsWrapper {
+   }
+   .outerPanelWrapper {
+      margin-top: 57vh;
+      .productPanelWrapper {
          display: flex;
-         flex-direction: column;
-         justify-content: center;
-         align-items: center;
-         gap: 10px;
-         width: 5em;
-         input {
-            width: 2.7em;
-            padding: 0.4em 0.5em;
-            background-color: var.$primary-bg;
-            color: white;
-            text-align: center;
-            border-radius: 99vh;
-            border: none;
-            outline: none;
+         gap: 1em;
+         margin-top: 0.5em;
+         padding: 0.5em 1.5em;
+         background-color: var.$secondary-bg;
+         color: white;
+         border-radius: 10px;
+         .imageWrapper {
+            display: flex;
+            gap: 10px;
+            width: 15em;
+            .image {
+               width: 3.5em;
+               aspect-ratio: 1;
+               background-color: #474654;
+               border-radius: 5px;
+            }
          }
-         input:focus {
-            outline: 3px solid #474654;
+         .gramsWrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 5em;
+            input {
+               width: 2.7em;
+               padding: 0.4em 0.5em;
+               background-color: var.$primary-bg;
+               color: white;
+               text-align: center;
+               border-radius: 99vh;
+               border: none;
+               outline: none;
+            }
+            input:focus {
+               outline: 3px solid #474654;
+            }
          }
-      }
-      .close {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         width: 20px;
-         height: 20px;
-         background-color: var.$button-exit;
-         font-size: 0.7rem;
-         border-radius: 50%;
-         cursor: pointer;
-      }
-      .close:hover {
-         outline: 2px solid white;
+         .close {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            background-color: var.$button-exit;
+            font-size: 0.7rem;
+            border-radius: 50%;
+            cursor: pointer;
+         }
+         .close:hover {
+            outline: 2px solid white;
+         }
       }
    }
 }

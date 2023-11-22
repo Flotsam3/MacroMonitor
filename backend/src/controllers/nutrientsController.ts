@@ -21,3 +21,12 @@ export const getAllFood = async(req:Request, res:Response) => {
         res.status(500).send(error);
     };
 };
+
+export const deleteFoodItem = async(req:Request, res:Response) => {
+    try {
+        await Food.findOneAndDelete({name:req.body.name});
+        res.status(204).end();
+    } catch (error) {
+        res.status(500).send(error);
+    };
+};

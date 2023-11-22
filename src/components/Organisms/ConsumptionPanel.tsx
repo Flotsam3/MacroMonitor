@@ -4,9 +4,10 @@ import { Options } from "../../context/OptionContext";
 
 type ConsumptionPanelProps = {
    data: Options;
+   deleteItem:(arg0:string) => void
 };
 
-export default function ConsumptionPanel({data}:ConsumptionPanelProps) {
+export default function ConsumptionPanel({data, deleteItem}:ConsumptionPanelProps) {
   return (
    <div className={styles.panelWrapper}>
       <div className={styles.panel}>
@@ -23,7 +24,7 @@ export default function ConsumptionPanel({data}:ConsumptionPanelProps) {
             <Macronutrient label={"Sugar"} value={data.sugar}/>
             <Macronutrient label={"Salt"} value={data.salt}/>
          </div>
-         <span className={styles.close}>x</span>
+         <span className={styles.close} onClick={()=>deleteItem(data._id || "")}>x</span>
       </div>
  </div>
   )
