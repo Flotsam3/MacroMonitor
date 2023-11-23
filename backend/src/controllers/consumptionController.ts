@@ -29,3 +29,12 @@ export const deleteConsumptionItem = async(req:Request, res:Response) => {
         res.status(500).send(error);
     };
 };
+
+export const deleteConsumption = async(req:Request, res:Response) => {
+    try {
+        await Consumption.deleteMany();
+        res.status(204).end();
+    } catch (error) {
+        res.status(500).send(error);
+    };
+};

@@ -65,7 +65,7 @@ export default function Products() {
       food?.find((foodItem)=>{
           const amount = +selectedFood[key]/100;
           if (foodItem.name === key ){
-            const selectionData = {name:key, grams:amount * 100, calories:amount * foodItem.calories, carbohydrates:amount * foodItem.carbohydrates, fat:amount * foodItem.fat, protein:amount * foodItem.protein, saturatedFat:amount * foodItem.saturatedFat, sugar:amount * foodItem.sugar, salt:amount * foodItem.salt};
+            const selectionData = {name:key, grams:+(amount * 100).toFixed(1), calories:+(amount * foodItem.calories).toFixed(1), carbohydrates:+(amount * foodItem.carbohydrates).toFixed(1), fat:+(amount * foodItem.fat).toFixed(1), protein:+(amount * foodItem.protein).toFixed(1), saturatedFat:+(amount * foodItem.saturatedFat).toFixed(1), sugar:+(amount * foodItem.sugar).toFixed(1), salt:+(amount * foodItem.salt).toFixed(1)};
             dailyConsumption.push(selectionData);
           };
       });
