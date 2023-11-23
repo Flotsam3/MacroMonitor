@@ -33,40 +33,43 @@
         display: flex;
         justify-content: center;
     }
-    .panelWrapper {
-        display: flex;
-        gap: 1em;
-        margin-top: 15em;
-        padding: 0.5em 1.5em;
-        background-color: var.$secondary-bg;
-        color: white;
-        border-radius: 10px;
-        .dateWrapper {
+    .outerPanelWrapper {
+        margin-top: 25vmin;
+        .panelWrapper {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 20%;
-            .grams {
-                width: 30%;
-                padding: 0.2em 1em;
-                background-color: #474654;
-                text-align: center;
-                border-radius: 99vh;
+            gap: 1em;
+            margin-top: 0.3em;
+            padding: 0.5em 1.5em;
+            background-color: var.$secondary-bg;
+            color: white;
+            border-radius: 10px;
+            .dateWrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 20%;
+                .grams {
+                    width: 30%;
+                    padding: 0.2em 1em;
+                    background-color: #474654;
+                    text-align: center;
+                    border-radius: 99vh;
+                }
             }
+            .close {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 20px;
+                height: 20px;
+                background-color: var.$button-exit;
+                font-size: 0.7rem;
+                border-radius: 50%;
+                cursor: pointer;
+             }
+             .close:hover {
+                outline: 2px solid white;
+             }
         }
-        .close {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 20px;
-            height: 20px;
-            background-color: var.$button-exit;
-            font-size: 0.7rem;
-            border-radius: 50%;
-            cursor: pointer;
-         }
-         .close:hover {
-            outline: 2px solid white;
-         }
     }
 }

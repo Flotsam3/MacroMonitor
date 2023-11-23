@@ -79,3 +79,19 @@ export const deleteConsumption = async():Promise<void>=>{
         method:"DELETE",
     });
 };
+
+export const createArchiveItem = async(payload:object)=>{
+    const response = await fetch(URL + "/archive",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify(payload)
+    });
+    const data = await response.json();
+    return data;
+};
+
+export const getArchive = async()=>{
+    const response = await fetch(URL + "/archive");
+    const data = await response.json();
+    return data;
+};

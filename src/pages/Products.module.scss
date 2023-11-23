@@ -38,12 +38,11 @@
             width: 2em;
             // background-color: var.$panel-bg-primary;
             background: rgb(253,137,32);
-            background: linear-gradient(180deg, rgba(253,137,32,1) 0%, rgba(253,137,32,1) 51%, rgba(99,158,97,1) 51%);
             border: 2px solid white;
             font-size: 1.5rem;
          }
          button:hover {
-            background-color: #474654;
+            background-color: var.$primary-bg;
             outline: 3px solid white;
          }
       }

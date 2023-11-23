@@ -30,8 +30,8 @@ export type ConsumptionItem = {
 };
 
 export default function Balance() {
-  const {consumption, setConsumptionData, options, setOptionsData} = useContext(OptionContext) || [];
-  const [macroBalance, setMacroBalance] = useState<MacroItem[]>([{wrapperClass: "carbsWrapper", title: "Carbs", amount:450, percent:"95%"},{wrapperClass: "fatWrapper", title: "Fat", amount:450, percent:"95%"},{wrapperClass: "proteinWrapper", title: "Protein", amount:450, percent:"95%"},{wrapperClass: "saturatedFatWrapper", title: "Sat. fat", amount:450, percent:"95%"},{wrapperClass: "sugarWrapper", title: "Sugar", amount:450, percent:"95%"},{wrapperClass: "saltWrapper", title: "Salt", amount:450, percent:"95%"},{wrapperClass: "caloriesWrapper", title: "Calories", amount:450, percent:"95%"}]);
+  const {consumption, setConsumptionData, options, setOptionsData, setArchiveItem} = useContext(OptionContext) || [];
+  const [macroBalance, setMacroBalance] = useState<MacroItem[]>([{wrapperClass: "carbsWrapper", title: "Carbs", amount:0, percent:"0%"},{wrapperClass: "fatWrapper", title: "Fat", amount:0, percent:"0%"},{wrapperClass: "proteinWrapper", title: "Protein", amount:0, percent:"0%"},{wrapperClass: "saturatedFatWrapper", title: "Sat. fat", amount:0, percent:"0%"},{wrapperClass: "sugarWrapper", title: "Sugar", amount:0, percent:"0%"},{wrapperClass: "saltWrapper", title: "Salt", amount:0, percent:"0%"},{wrapperClass: "caloriesWrapper", title: "Calories", amount:0, percent:"0%"}]);
 
   useEffect(()=>{
     const fetchOptions = async() =>{
@@ -46,25 +46,27 @@ export default function Balance() {
       };
     };
 
-    const getData = async()=>{
+  const getData = async () => {
+    try {
       const consumptionData = await getConsumption();
-      if (setConsumptionData){
-        setConsumptionData(consumptionData);
-      };
-    };
-    return ()=>{
-      fetchOptions();
-      getData();
-    };
-  },[]);
+      console.log("After fetch", { consumptionData });
 
-  useEffect(()=>{
-    
-    return ()=>{
-      console.log("updated");
-      calculateBalance();
+      if (setConsumptionData) {
+        console.log("Setting consumption");
+        setConsumptionData(consumptionData);
+      }
+    } catch (error) {
+      console.error("Error fetching consumption data:", error);
     }
-  },[options, consumption]);
+  };
+    fetchOptions();
+    getData();
+}, []); 
+
+  useEffect(() => {
+    console.log("updated", { consumption, options });
+    calculateBalance();
+  }, [consumption]); 
   
   async function deleteOneConsumptionItem(id:string){
     await deleteConsumptionItem(id);
@@ -76,7 +78,7 @@ export default function Balance() {
 
   function calculateBalance(){
     const summerizedValues = {calories:0, carbohydrates:0, fat:0, protein:0, saturatedFat:0, sugar:0, salt:0};
-    const _macroBalance = macroBalance;
+    const _macroBalance = [...macroBalance];
 
     consumption?.forEach((obj)=>{
       summerizedValues.calories += +obj.calories;
@@ -88,27 +90,26 @@ export default function Balance() {
         summerizedValues.salt += +obj.salt;
     });
     if (options){
+      console.log("inside options");
       const balanceData = {calories:Math.round(summerizedValues.calories * 100 / options?.calories), carbohydrates:Math.round(summerizedValues.carbohydrates * 100 / options?.carbohydrates), fat:Math.round(summerizedValues.fat * 100 / options?.fat), protein:Math.round(summerizedValues.protein * 100 / options?.protein), saturatedFat:Math.round(summerizedValues.saturatedFat * 100 / options?.saturatedFat), sugar:Math.round(summerizedValues.sugar * 100 / options?.sugar), salt:Math.round(summerizedValues.salt * 100 / options?.salt)};
       console.log({summerizedValues, balanceData, options});
 
-      _macroBalance[6].amount = summerizedValues.calories;
+      _macroBalance[6].amount = +summerizedValues.calories.toFixed(1);
       _macroBalance[6].percent = isNaN(+balanceData.salt) ? "0%" : balanceData.calories + "%";
-      _macroBalance[0].amount = summerizedValues.carbohydrates;
+      _macroBalance[0].amount = +summerizedValues.carbohydrates.toFixed(1);
       _macroBalance[0].percent = isNaN(+balanceData.salt) ? "0%" : balanceData.carbohydrates + "%";
-      _macroBalance[1].amount = summerizedValues.fat;
+      _macroBalance[1].amount = +summerizedValues.fat.toFixed(1);
       _macroBalance[1].percent = isNaN(+balanceData.salt) ? "0%" : balanceData.fat + "%";
-      _macroBalance[2].amount = summerizedValues.protein;
+      _macroBalance[2].amount = +summerizedValues.protein.toFixed(1);
       _macroBalance[2].percent = isNaN(+balanceData.salt) ? "0%" : balanceData.protein + "%";
-      _macroBalance[3].amount = summerizedValues.saturatedFat;
+      _macroBalance[3].amount = +summerizedValues.saturatedFat.toFixed(1);
       _macroBalance[3].percent = isNaN(+balanceData.salt) ? "0%" : balanceData.saturatedFat + "%";
-      _macroBalance[4].amount = summerizedValues.sugar;
+      _macroBalance[4].amount = +summerizedValues.sugar.toFixed(1);
       _macroBalance[4].percent = isNaN(+balanceData.salt) ? "0%" : balanceData.sugar + "%";
-      _macroBalance[5].amount = summerizedValues.salt;
+      _macroBalance[5].amount = +summerizedValues.salt.toFixed(1);
       _macroBalance[5].percent = isNaN(+balanceData.salt) ? "0%" : balanceData.salt + "%";
 
-      setMacroBalance(()=>_macroBalance);
-      console.log({macroBalance, _macroBalance});
-      
+      setMacroBalance(_macroBalance);
     };
   };
 
@@ -118,7 +119,34 @@ export default function Balance() {
     if (setConsumptionData){
       setConsumptionData(consumptionData);
     };
-    calculateBalance();
+  };
+
+  function handleCalculateArchive(){
+    const summarizedConsumption = {date:"", grams:0, calories:0, carbohydrates:0, fat:0, protein:0, saturatedFat:0, sugar:0, salt:0};
+    if (consumption){
+      const _consumption = [...consumption];
+      _consumption.forEach((obj)=>{
+          summarizedConsumption.grams += Math.round(obj.grams || 0);
+          summarizedConsumption.calories += Math.round(obj.calories || 0);
+          summarizedConsumption.carbohydrates += Math.round(obj.carbohydrates || 0);
+          summarizedConsumption.fat += Math.round(obj.fat || 0);
+          summarizedConsumption.protein += Math.round(obj.protein || 0);
+          summarizedConsumption.saturatedFat += Math.round(obj.saturatedFat || 0);
+          summarizedConsumption.sugar += Math.round(obj.sugar || 0);
+          summarizedConsumption.salt += Math.round(obj.salt || 0);
+      });
+      const date = new Date();
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      const today = `${year}-${month}-${day}`;
+      summarizedConsumption.date = today;
+      if (setArchiveItem){
+        setArchiveItem(summarizedConsumption);
+        console.log({summarizedConsumption});
+        
+      };
+    };
   };
 
   return (
@@ -129,7 +157,7 @@ export default function Balance() {
         <h1>Daily intake</h1>
         <div className={styles.buttonWrapper}>
           <Button label="Reset" onClick={resetList} appearance="typeA"/>
-          <Button label="Archivate" appearance="typeB"><img src={orange} alt="orange" /></Button>
+          <Button label="Archivate" onClick={handleCalculateArchive} appearance="typeB"><img src={orange} alt="orange" /></Button>
         </div>
         <img src={dish} alt="Dish on a plate" />
       </div>
