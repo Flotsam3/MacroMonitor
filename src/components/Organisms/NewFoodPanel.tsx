@@ -1,10 +1,12 @@
-import {useState, useContext} from "react";
+import {useContext} from "react";
 import styles from "./NewFoodPanel.module.scss";
 import MacronutrientInput from "../Molecules/MacronutrientInput";
 import Button from "../Atoms/Button";
 import { Nutrient } from "../Molecules/OptionItem";
 import { createFood, getAllFood } from "../../services/api";
 import { OptionContext } from "../../context/OptionContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type HandleCreateMenuType = () => void;
 
@@ -14,14 +16,12 @@ type NewFoodPanelProps = {
 
 export default function NewFoodPanel({handleCreateMenu}: NewFoodPanelProps): JSX.Element {
   const {setFoodData, inputValue, setInputValue} = useContext(OptionContext);
-  // const [inputValue, setInputValue] = useState({name:"", calories:"", carbohydrates:"", fat:"", protein:"", saturatedFat:"", sugar:"", salt:""});
   
   function handleChange(evt:React.ChangeEvent<HTMLInputElement>){
     const name = evt.target.name;
     const value = evt.target.value;
     console.log({name, value});
     if (setInputValue){
-      // setInputValue({...inputValue, [name]:value});
       setInputValue((prevInputValue) => ({
         ...prevInputValue,
         [name]: value,
@@ -31,6 +31,9 @@ export default function NewFoodPanel({handleCreateMenu}: NewFoodPanelProps): JSX
 
   async function handleAddToList(){
     if (inputValue && setInputValue){
+      if (inputValue.name === "") return handleValidationError("Name cannot be empty!");
+      if (inputValue.calories === "" || inputValue.carbohydrates === "" || inputValue.fat === "" || inputValue.protein === "" || inputValue.saturatedFat === "" || inputValue.sugar === "" || inputValue.salt === "") return handleValidationError("All fields must have a value!")
+      console.log("passed validation");
       const response = await createFood(inputValue);
       setInputValue({name:"", calories:"", carbohydrates:"", fat:"", protein:"", saturatedFat:"", sugar:"", salt:""});
       const data = await getAllFood();
@@ -41,10 +44,23 @@ export default function NewFoodPanel({handleCreateMenu}: NewFoodPanelProps): JSX
     }
   };
 
+  function handleValidationError(message:string){
+    toast.error(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
+  };
   
 
   return (
     <div className={styles.panelWrapper}>
+      <ToastContainer position="top-center" autoClose={5000} hideProgressBar newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored"/>
       <h1>New Food Item</h1>
       <div className={styles.panel}>
           <div className={styles.nameWrapper}>

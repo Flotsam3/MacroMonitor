@@ -8,7 +8,7 @@ import MacroCups from "../components/Organisms/MacroCups";
 import ConsumptionPanel from "../components/Organisms/ConsumptionPanel";
 import Button from "../components/Atoms/Button";
 import { OptionContext } from "../context/OptionContext";
-import { getConsumption, deleteConsumptionItem, deleteConsumption, getAllOptions, createOptions } from "../services/api";
+import { getConsumption, deleteConsumptionItem, deleteConsumption, getAllOptions, createOptions, createArchiveItem } from "../services/api";
 
 export type MacroItem = {
   wrapperClass: "carbsWrapper" | "fatWrapper" | "proteinWrapper" | "saturatedFatWrapper" | "sugarWrapper" | "saltWrapper" | "caloriesWrapper"
@@ -121,7 +121,7 @@ export default function Balance() {
     };
   };
 
-  function handleCalculateArchive(){
+  async function handleCalculateArchive(){
     const summarizedConsumption = {date:"", grams:0, calories:0, carbohydrates:0, fat:0, protein:0, saturatedFat:0, sugar:0, salt:0};
     if (consumption){
       const _consumption = [...consumption];
@@ -141,10 +141,11 @@ export default function Balance() {
       let year = date.getFullYear();
       const today = `${year}-${month}-${day}`;
       summarizedConsumption.date = today;
+
+      await createArchiveItem(summarizedConsumption)
       if (setArchiveItem){
         setArchiveItem(summarizedConsumption);
         console.log({summarizedConsumption});
-        
       };
     };
   };

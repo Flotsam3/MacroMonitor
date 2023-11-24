@@ -95,3 +95,32 @@ export const getArchive = async()=>{
     const data = await response.json();
     return data;
 };
+
+export const deleteArchiveItem = async(id:string):Promise<void>=>{
+    await fetch(URL + `/archive/${id}`,{
+        method:"DELETE",
+    });
+};
+
+export const deleteArchive = async():Promise<void>=>{
+    await fetch(URL + "/archive",{
+        method:"DELETE",
+    });
+};
+
+export const uploadImage = async(id:string, image:string, base64Image:string | ArrayBuffer):Promise<void>=> {
+    try {
+        const response = await fetch(URL + "/food/images/" + id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({previousImage:image, image: base64Image }),
+        });
+
+        console.log({response});
+        return response.json();
+    } catch (error) {
+        throw error;
+    };
+};

@@ -4,7 +4,7 @@ import Navigation from "../components/Organisms/Navigation";
 import NewFoodPanel from "../components/Organisms/NewFoodPanel";
 import Macronutrient from "../components/Molecules/Macronutrient";
 import banana from "../assets/images/banane_1.png";
-import { getAllOptions, createOptions, getAllFood, saveConsumption, getConsumption, deleteFoodItem } from "../services/api";
+import { getAllOptions, createOptions, getAllFood, saveConsumption, getConsumption, deleteFoodItem, uploadImage } from "../services/api";
 import { OptionContext, Options, InputValues } from "../context/OptionContext";
 
 type SelectedFood = {
@@ -14,6 +14,8 @@ type SelectedFood = {
 export default function Products() {
   const {setOptionsData, food, setFoodData, setConsumptionData, setInputValue} = useContext(OptionContext) || {};
   const [selectedFood, setSelectedFood] = useState<SelectedFood>({});
+
+  console.log("dotenv", import.meta.env.VITE_CLOUDINARY_URL);
   
   useEffect(()=>{
     const fetchOptions = async() =>{
@@ -36,7 +38,7 @@ export default function Products() {
     };
     return ()=>{
       fetchOptions();
-      getFood();
+      getFood();      
     };
   },[]);
 
@@ -121,6 +123,24 @@ export default function Products() {
     };
   };
 
+  async function handleUploadImage(id:string, image:string, evt:React.ChangeEvent<HTMLInputElement>){
+    const target = evt.target as HTMLInputElement & {
+      files: FileList;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(target.files[0]);
+    reader.onload = async function () {
+        const base64Image = reader.result;
+        if (base64Image){
+          await uploadImage(id, image, base64Image);
+          const data = await getAllFood();
+          if (setFoodData){
+            setFoodData(data);
+          };
+        };
+    };
+  };
+
   return (
     <div className={styles.products}>
         <div className={styles.inputWrapper}>
@@ -135,7 +155,10 @@ export default function Products() {
           {food && food.map((food, index)=>(
             <div key={index} className={styles.productPanelWrapper}>
               <div className={styles.imageWrapper}>
-                <p className={styles.image}></p>
+                <p className={styles.image}>
+                  {food.image && <img src={import.meta.env.VITE_CLOUDINARY_URL + food.image} alt="" />}
+                  <input type="file" onChange={(evt)=>handleUploadImage(food._id || "", food.image || "", evt)}/>
+                </p>
                 <p className={styles.title}>{food.name}</p>
               </div>
               <Macronutrient label="Kcal" value={food.calories}/>

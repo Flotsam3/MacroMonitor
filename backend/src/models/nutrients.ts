@@ -1,14 +1,15 @@
 import {Schema, model} from "mongoose";
 
 type FoodItem = {
-    name:string,
-    calories:number,
-    carbohydrates:number,
-    fat:number,
-    protein:number,
-    saturatedFat:number,
-    sugar:number,
+    name:string
+    calories:number
+    carbohydrates:number
+    fat:number
+    protein:number
+    saturatedFat:number
+    sugar:number
     salt:number
+    image:string
 }
 
 const foodSchema = new Schema({
@@ -19,7 +20,8 @@ const foodSchema = new Schema({
     protein:{type:Number, required:true},
     saturatedFat:{type:Number, required:true},
     sugar:{type:Number, required:true},
-    salt:{type:Number, required:true}
+    salt:{type:Number, required:true},
+    image:{type:String}
 });
 
 export const Food = model<FoodItem>("Food", foodSchema)

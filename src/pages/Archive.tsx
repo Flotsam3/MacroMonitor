@@ -1,13 +1,50 @@
-import {useContext} from "react";
+import {useEffect, useContext} from "react";
 import Navigation from "../components/Organisms/Navigation";
 import styles from "./Archive.module.scss";
 import Button from "../components/Atoms/Button";
 import Macronutrient from "../components/Molecules/Macronutrient";
 import pasta from "../assets/images/nudeln_1.png"
 import { OptionContext } from "../context/OptionContext";
+import { getArchive, deleteArchiveItem, deleteArchive } from "../services/api";
 
 export default function Archive() {
   const {archive, setArchive} = useContext(OptionContext) || [];
+
+  useEffect(()=>{
+    const getArchiveData = async() => {
+      const data = await getArchive();
+      if (setArchive){
+        setArchive(data);
+        console.log({data});
+      };
+    };
+
+    return ()=>{
+      getArchiveData();
+    };
+  },[]);
+
+  function formatDate(dateString:string){
+    const date = new Date(dateString);
+    return date.toLocaleDateString('de-DE');
+  };
+
+  async function deleteItem(id:string){
+    await deleteArchiveItem(id);
+    const data = await getArchive();
+    if (setArchive){
+      setArchive(data);
+    };
+  };
+
+  async function resetArchive(){
+    await deleteArchive();
+    const data = await getArchive();
+    if (setArchive){
+      setArchive(data);
+    };
+  };
+
   return (
       <div className={styles.archive}>
         <div className={styles.archiveHeader}>
@@ -16,13 +53,13 @@ export default function Archive() {
         <Navigation />
         <h1>Archive</h1>
         <div className={styles.buttonWrapper}>
-          <Button label="Reset" appearance="typeA" />
+          <Button label="Reset" appearance="typeA" onClick={resetArchive}/>
         </div>
         <div className={styles.outerPanelWrapper}>
           {archive?.map((obj, index)=>(
             <div key={index} className={styles.panelWrapper}>
               <div className={styles.dateWrapper}>
-                <p className={styles.date}>01.08.2023</p>
+                <p className={styles.date}>{formatDate(obj.date || "")}</p>
                 <p className={styles.grams}>{obj.grams}</p>
               </div>
                 <Macronutrient label="Kcal" value={obj.calories} />
@@ -32,7 +69,7 @@ export default function Archive() {
                 <Macronutrient label="Sat.fat" value={obj.saturatedFat} />
                 <Macronutrient label="Sugar" value={obj.sugar} />
                 <Macronutrient label="Salt" value={obj.salt} />
-                <span className={styles.close}>x</span>
+                <span className={styles.close} onClick={()=>deleteItem(obj._id || "")}>x</span>
             </div>
           ))}
         </div>

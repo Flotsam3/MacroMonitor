@@ -12,6 +12,7 @@ export type Options = {
     sugar:number
     salt:number
     grams?:number
+    image?:string
 };
 
 export type InputValues = {
