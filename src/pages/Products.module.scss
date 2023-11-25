@@ -67,7 +67,7 @@
                aspect-ratio: 1;
                background-color: #474654;
                border-radius: 5px;
-               img {
+               .image_small {
                   display: block;
                   width: 100%;
                   height: 100%;
@@ -86,7 +86,22 @@
                }
             }
             .title {
+               position: relative;
                font-size: 0.8rem;
+               .image_large {
+                  position: absolute;
+                  top: -100px;
+                  left: 0;
+                  transform: scale(0);
+                  width: 200px;
+                  height: 200px;
+                  border-radius: 5px;
+                  z-index: 20;
+               }
+            }
+            .title:hover .image_large {
+               transform: scale(1);
+               transition: 1s ease;
             }
          }
          .gramsWrapper {

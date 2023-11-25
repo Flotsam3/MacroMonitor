@@ -23,7 +23,7 @@ export const createFood = async(req:Request, res:Response) => {
 
 export const getAllFood = async(req:Request, res:Response) => {
     try {
-        const data = await Food.find();
+        const data = await Food.find().sort({name:"ascending"});
         res.status(200).json(data);
     } catch (error) {
         res.status(500).send(error);

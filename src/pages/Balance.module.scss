@@ -1,7 +1,10 @@
 @use "../assets/variables" as var;
 
 .balance {
-   position: relative;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
    .headerContainer {
       width: 50%;
       margin: 5em 0 0 2em;
@@ -60,7 +63,7 @@
 }
 
 h2.consumption {
-   margin-top: 4em;
+   margin-top: 60vmin;
    font-size: clamp(1.3rem, 3vw, 3.5rem);
    color: var.$panel-bg-primary;
    text-align: center;

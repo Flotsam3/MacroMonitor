@@ -5,7 +5,7 @@ import Button from "../Atoms/Button";
 import { Nutrient } from "../Molecules/OptionItem";
 import { createFood, getAllFood } from "../../services/api";
 import { OptionContext } from "../../context/OptionContext";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 type HandleCreateMenuType = () => void;
@@ -60,7 +60,7 @@ export default function NewFoodPanel({handleCreateMenu}: NewFoodPanelProps): JSX
 
   return (
     <div className={styles.panelWrapper}>
-      <ToastContainer position="top-center" autoClose={5000} hideProgressBar newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored"/>
+      <ToastContainer position="top-center" transition={Zoom} autoClose={5000} hideProgressBar newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored"/>
       <h1>New Food Item</h1>
       <div className={styles.panel}>
           <div className={styles.nameWrapper}>

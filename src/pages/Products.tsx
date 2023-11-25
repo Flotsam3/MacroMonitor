@@ -6,6 +6,7 @@ import Macronutrient from "../components/Molecules/Macronutrient";
 import banana from "../assets/images/banane_1.png";
 import { getAllOptions, createOptions, getAllFood, saveConsumption, getConsumption, deleteFoodItem, uploadImage } from "../services/api";
 import { OptionContext, Options, InputValues } from "../context/OptionContext";
+import { ToastContainer, toast } from 'react-toastify';
 
 type SelectedFood = {
   [key: string]: string | number;
@@ -82,6 +83,16 @@ export default function Products() {
       await saveConsumption(data);
       const updatedData = await getConsumption();
       setConsumptionData(updatedData);
+      toast.success("Food saved into daily consumption!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
     };
   };
 
@@ -156,10 +167,12 @@ export default function Products() {
             <div key={index} className={styles.productPanelWrapper}>
               <div className={styles.imageWrapper}>
                 <p className={styles.image}>
-                  {food.image && <img src={import.meta.env.VITE_CLOUDINARY_URL + food.image} alt="" />}
+                  {food.image && <img className={styles.image_small} src={import.meta.env.VITE_CLOUDINARY_URL + food.image} alt="" />}
                   <input type="file" onChange={(evt)=>handleUploadImage(food._id || "", food.image || "", evt)}/>
                 </p>
-                <p className={styles.title}>{food.name}</p>
+                <p className={styles.title}>{food.name}
+                  {food.image && <img className={styles.image_large} src={import.meta.env.VITE_CLOUDINARY_URL + food.image} alt="" />}
+                </p>
               </div>
               <Macronutrient label="Kcal" value={food.calories}/>
               <Macronutrient label="Carbs" value={food.carbohydrates}/>

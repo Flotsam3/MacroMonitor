@@ -9,6 +9,7 @@ import ConsumptionPanel from "../components/Organisms/ConsumptionPanel";
 import Button from "../components/Atoms/Button";
 import { OptionContext } from "../context/OptionContext";
 import { getConsumption, deleteConsumptionItem, deleteConsumption, getAllOptions, createOptions, createArchiveItem } from "../services/api";
+import { ToastContainer, toast, Zoom } from 'react-toastify';
 
 export type MacroItem = {
   wrapperClass: "carbsWrapper" | "fatWrapper" | "proteinWrapper" | "saturatedFatWrapper" | "sugarWrapper" | "saltWrapper" | "caloriesWrapper"
@@ -145,6 +146,16 @@ export default function Balance() {
       await createArchiveItem(summarizedConsumption)
       if (setArchiveItem){
         setArchiveItem(summarizedConsumption);
+        toast.success("Food saved into archive!", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
         console.log({summarizedConsumption});
       };
     };
@@ -152,6 +163,7 @@ export default function Balance() {
 
   return (
     <>
+    <ToastContainer position="top-center" transition={Zoom} autoClose={5000} hideProgressBar newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored"/>
     <div className={styles.balance}>
       <Navigation />
       <div className={styles.headerContainer}>
