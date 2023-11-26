@@ -92,8 +92,16 @@ export default function Balance() {
     });
     if (options){
       console.log("inside options");
-      const balanceData = {calories:Math.round(summerizedValues.calories * 100 / options?.calories), carbohydrates:Math.round(summerizedValues.carbohydrates * 100 / options?.carbohydrates), fat:Math.round(summerizedValues.fat * 100 / options?.fat), protein:Math.round(summerizedValues.protein * 100 / options?.protein), saturatedFat:Math.round(summerizedValues.saturatedFat * 100 / options?.saturatedFat), sugar:Math.round(summerizedValues.sugar * 100 / options?.sugar), salt:Math.round(summerizedValues.salt * 100 / options?.salt)};
-      console.log({summerizedValues, balanceData, options});
+      const balanceData = {
+        calories:Math.round(summerizedValues.calories * 100 / options?.calories), 
+        carbohydrates:Math.round(summerizedValues.carbohydrates * 4 / summerizedValues.calories * 100 / (options?.carbohydrates * 4 / options?.calories * 100) * 100), 
+        fat:Math.round(summerizedValues.fat * 9 / summerizedValues.calories * 100 / (options?.fat * 9 / options?.calories * 100) * 100), 
+        protein:Math.round(summerizedValues.protein * 4 / summerizedValues.calories * 100 / (options?.protein * 4 / options?.calories * 100) * 100), 
+        saturatedFat:Math.round(summerizedValues.saturatedFat * 9 / summerizedValues.calories * 100 / (options?.saturatedFat * 9 / options?.calories * 100) * 100), 
+        sugar:Math.round(summerizedValues.sugar * 4 / summerizedValues.calories * 100 / (options?.sugar * 4 / options?.calories * 100) * 100), 
+        salt:Math.round(summerizedValues.salt * 100 / options?.salt)};
+
+      console.log(summerizedValues.saturatedFat, summerizedValues.calories, options?.saturatedFat, options?.calories, options?.saturatedFat * 9 / options?.calories *100);
 
       _macroBalance[6].amount = +summerizedValues.calories.toFixed(1);
       _macroBalance[6].percent = isNaN(+balanceData.salt) ? "0%" : balanceData.calories + "%";

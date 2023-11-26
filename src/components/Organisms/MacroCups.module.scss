@@ -26,6 +26,16 @@
           font-size: 0.8rem;
        }
     }
+    .cupGreen {
+      background-image: url(../../assets/images/cup_green.svg);
+    }
+    .cupYellow {
+      background-image: url(../../assets/images/cup_yellow.svg);
+      color: var.$secondary-bg;
+    }
+    .cupRed {
+      background-image: url(../../assets/images/cup_red.svg);
+    }
  }
  .caloriesWrapper {
     position: absolute;
@@ -52,6 +62,16 @@
           height: 100%;
           font-size: 0.8rem;
        }
+    }
+    .cupGreen {
+      background-image: url(../../assets/images/bowl_green.svg);
+    }
+    .cupYellow {
+      background-image: url(../../assets/images/bowl_yellow.svg);
+      color: var.$secondary-bg;
+    }
+    .cupRed {
+      background-image: url(../../assets/images/bowl_red.svg);
     }
  }
  .carbsWrapper {

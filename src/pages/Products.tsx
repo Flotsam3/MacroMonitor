@@ -6,7 +6,7 @@ import Macronutrient from "../components/Molecules/Macronutrient";
 import banana from "../assets/images/banane_1.png";
 import { getAllOptions, createOptions, getAllFood, saveConsumption, getConsumption, deleteFoodItem, uploadImage } from "../services/api";
 import { OptionContext, Options, InputValues } from "../context/OptionContext";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 type SelectedFood = {
   [key: string]: string | number;
