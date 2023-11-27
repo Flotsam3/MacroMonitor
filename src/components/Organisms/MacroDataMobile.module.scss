@@ -1,0 +1,20 @@
+@use "../../assets/variables" as var;
+
+.dataWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 5rem;
+    color: white;
+    .title {
+        font-size: 0.9rem;
+     }
+     span {
+        font-size: 0.7rem;
+     }
+    .cup {
+        width: 2rem;
+        height: 2rem;
+        background-color: var.$primary-bg;
+        border-radius: 0 0 15px 15px;
+    }
+}

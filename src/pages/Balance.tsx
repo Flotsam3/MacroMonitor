@@ -7,6 +7,7 @@ import Navigation from "../components/Organisms/Navigation";
 import MacroCups from "../components/Organisms/MacroCups";
 import ConsumptionPanel from "../components/Organisms/ConsumptionPanel";
 import Button from "../components/Atoms/Button";
+import MacroDataMobile from "../components/Organisms/MacroDataMobile";
 import { OptionContext } from "../context/OptionContext";
 import { getConsumption, deleteConsumptionItem, deleteConsumption, getAllOptions, createOptions, createArchiveItem } from "../services/api";
 import { ToastContainer, toast, Zoom } from 'react-toastify';
@@ -174,13 +175,27 @@ export default function Balance() {
     <ToastContainer position="top-center" transition={Zoom} autoClose={5000} hideProgressBar newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored"/>
     <div className={styles.balance}>
       <Navigation />
-      <div className={styles.headerContainer}>
-        <h1>Daily intake</h1>
-        <div className={styles.buttonWrapper}>
-          <Button label="Reset" onClick={resetList} appearance="typeA"/>
-          <Button label="Archivate" onClick={handleCalculateArchive} appearance="typeB"><img src={orange} alt="orange" /></Button>
+      <div className={styles.mainWrapper}>
+        <div className={styles.headerContainer}>
+          <h1>Daily intake</h1>
+          <div className={styles.buttonWrapper}>
+            <Button label="Reset" onClick={resetList} appearance="typeA"/>
+            <Button label="Archivate" onClick={handleCalculateArchive} appearance="typeB"><img src={orange} alt="orange" /></Button>
+          </div>
+          <img src={dish} alt="Dish on a plate" />
         </div>
-        <img src={dish} alt="Dish on a plate" />
+        <div className={styles.infoBox}>
+          <div className={styles.topWrapper}>
+            <MacroDataMobile />
+            <MacroDataMobile />
+            <MacroDataMobile />
+          </div>
+          <div className={styles.bottomWrapper}>
+            <MacroDataMobile />
+            <MacroDataMobile />
+            <MacroDataMobile />
+          </div>
+        </div>
       </div>
       <img className={styles.vector1} src={vector1} alt="curved background" ></img>
       <div className={styles.infoCircle}>
