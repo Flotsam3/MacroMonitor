@@ -184,17 +184,10 @@ export default function Balance() {
           </div>
           <img src={dish} alt="Dish on a plate" />
         </div>
-        <div className={styles.infoBox}>
-          <div className={styles.topWrapper}>
-            <MacroDataMobile />
-            <MacroDataMobile />
-            <MacroDataMobile />
-          </div>
-          <div className={styles.bottomWrapper}>
-            <MacroDataMobile />
-            <MacroDataMobile />
-            <MacroDataMobile />
-          </div>
+        <div className={styles.macroWrapper}>
+          {macroBalance.map((obj, index)=>(
+            <MacroDataMobile key={index} data={obj}/>
+          ))}
         </div>
       </div>
       <img className={styles.vector1} src={vector1} alt="curved background" ></img>
@@ -208,7 +201,7 @@ export default function Balance() {
       <div className={styles.consumptionOuterWrapper}>
         {consumption && consumption.map((obj, index)=>(
           <ConsumptionPanel deleteItem={deleteOneConsumptionItem}  key={index} data={obj}/>
-        ))};
+        ))}
       </div>
     </>
   )

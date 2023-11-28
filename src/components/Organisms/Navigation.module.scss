@@ -1,12 +1,21 @@
 @use "../../assets/variables" as var;
 
 nav {
+   width: 100%;
    font-size: 2rem;
-   ul {
+   @media screen and (max-width:1049px) {
+      display: flex;
+      justify-content: flex-end;
+      padding: 2rem 2rem 0 0;
+   }
+   .desktopMenu {
       display: flex;
       justify-content: space-between;
       width: 50%;
       padding: 1em 0 0 1em;
+      @media screen and (max-width:1049px) {
+         display: none;
+      }
       li {
          margin: 0 1em;
          color: var.$font-light;
@@ -27,7 +36,6 @@ nav {
             height: 2px;
             bottom: 0;
             left: 0;
-            // background-color: var.$font-light;
             background-color: var.$button-primary-1;
             transform: scaleX(0);
             transition: transform 0.3s ease;
@@ -44,5 +52,43 @@ nav {
             transform: scale(0.7);
           }
       }
+   }
+   .burgerMenuWrapper {
+      display: none;
+      @media screen and (max-width:1049px) {
+         display: block;
+         width: 1em;
+      }
+      img {
+         width: 100%;
+         cursor: pointer;
+      }
+   }
+   .mobileMenu {
+      position: absolute;
+      top: 30px;
+      right: -250px;
+      width: 110px;
+      padding-right: 0.5rem;
+      background-color: var.$secondary-bg;
+      border-radius: 10px;
+      z-index: 100;
+      transition: 1s ease-in-out;
+      li {
+         margin-bottom: 1em;
+         list-style-type: none;
+         font-size: 1.3rem;
+         text-align: right;
+         img {
+            width: 1em;
+         }
+         a {
+            color: white;
+            text-decoration: none;
+         }
+      }
+   }
+   .slideMenu {
+      right: 0px;
    }
 }

@@ -5,19 +5,34 @@
    top: 0;
    left: 0;
    right: 0;
+   z-index: 10;
    @media screen and (max-width:1300px) {
+      position: fixed;
       background-color: var.$secondary-bg;
+   }
+   @media screen and (max-width:1049px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
    }
    .mainWrapper {
       @media screen and (max-width:1300px) {
          display: flex;
          justify-content: space-between;
       }
+      @media screen and (max-width:1049px) {
+         flex-direction: column;
+         align-items: center;
+      }
       .headerContainer {
          width: 50%;
          margin: 5em 0 0 2em;
          @media screen and (max-width:1300px) {
             margin-top: 2em;
+         }
+         @media screen and (max-width:1049px) {
+            width: 50%;
          }
          > img {
             position: absolute;
@@ -77,27 +92,32 @@
          display: none;
       }
    }
-   .infoBox {
+   .macroWrapper {
       display: none;
       margin-right: 5em;
       @media screen and (max-width:1300px) {
          display: flex;
-         flex-direction: column;
-         gap: 1.5em;
-     }
-     .topWrapper, .bottomWrapper {
-      display: flex;
-     }
+         align-items: flex-end;
+         padding-bottom: 2em;
+      }
+      @media screen and (max-width:1049px) {
+         align-items: center;
+         justify-content: center;
+         margin-right: 0;
+      }
    }
 }
 
 h2.consumption {
-   margin-top: 60vmin;
+   margin-top: 65vmin;
    font-size: clamp(1.3rem, 3vw, 3.5rem);
    color: var.$panel-bg-primary;
    text-align: center;
    @media screen and (max-width:1300px) {
-      margin-top: 30vh;
+      margin-top: 20rem;
+   }
+   @media screen and (max-width:1049px) {
+      margin-top: 26rem;
    }
 }
 

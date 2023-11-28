@@ -5,6 +5,9 @@
     align-items: center;
     gap: 10px;
     width: 5em;
+    @media screen and (max-width:450px) {
+      width: 4em;
+    }
     p {
        width: 50%;
        padding: 0.2em 1em;

@@ -5,23 +5,39 @@
     justify-content: center;
     margin-top: 0.3em;
     .panel {
+      position: relative;
        display: flex;
        padding: 1em 1.5em;
        background-color: var.$panel-bg-primary;
        color: var.$font-light;
        border-radius: 15px;
+       @media screen and (max-width:670px) {
+         flex-direction: column;
+       }
+       @media screen and (max-width:450px) {
+         width: 100%;
+         border-radius: 0;
+       }
        .nameWrapper {
           display: flex;
           flex-direction: column;
           justify-content: center;
           gap: 10px;
           width: 12em;
+          font-size: clamp(0.8rem, 1.5vw, 1rem);
+          @media screen and (max-width:670px) {
+            width: 100%;
+            margin-bottom: 1em;
+          }
           p {
              width: 30%;
              padding: 0.2em 1em;
              background-color: #474654;
              text-align: center;
              border-radius: 99vh;
+             @media screen and (max-width:670px) {
+               width: 8%;
+             }
           }
           h4 {
             font-size: 0.8rem;
@@ -29,6 +45,12 @@
        }
        .macrosWrapper {
           display: flex;
+          @media screen and (max-width:1300px) {
+            font-size: clamp(0.7rem, 1.5vw, 1rem);
+         }
+         @media screen and (max-width:670px) {
+            gap: 5px;
+          }
        }
        .close {
           display: flex;
@@ -40,6 +62,10 @@
           font-size: 0.7rem;
           border-radius: 50%;
           cursor: pointer;
+          @media screen and (max-width:670px) {
+            position: absolute;
+            right: 1em;
+          }
        }
        .close:hover {
           outline: 2px solid white;
