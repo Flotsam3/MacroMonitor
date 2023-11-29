@@ -16,8 +16,6 @@ export default function Products() {
   const {setOptionsData, food, setFoodData, setConsumptionData, setInputValue} = useContext(OptionContext) || {};
   const [selectedFood, setSelectedFood] = useState<SelectedFood>({});
 
-  console.log("dotenv", import.meta.env.VITE_CLOUDINARY_URL);
-  
   useEffect(()=>{
     const fetchOptions = async() =>{
       const initialFetch = await getAllOptions();
@@ -165,25 +163,33 @@ export default function Products() {
         <div className={styles.outerPanelWrapper}>
           {food && food.map((food, index)=>(
             <div key={index} className={styles.productPanelWrapper}>
-              <div className={styles.imageWrapper}>
-                <p className={styles.image}>
-                  {food.image && <img className={styles.image_small} src={import.meta.env.VITE_CLOUDINARY_URL + food.image} alt="" />}
-                  <input type="file" onChange={(evt)=>handleUploadImage(food._id || "", food.image || "", evt)}/>
-                </p>
-                <p className={styles.title}>{food.name}
-                  {food.image && <img className={styles.image_large} src={import.meta.env.VITE_CLOUDINARY_URL + food.image} alt="" />}
-                </p>
+              <div className={styles.titleWrapper}>
+                <div className={styles.imageWrapper}>
+                  <p className={styles.image}>
+                    {food.image && <img className={styles.image_small} src={import.meta.env.VITE_CLOUDINARY_URL + food.image} alt="" />}
+                    <input type="file" onChange={(evt)=>handleUploadImage(food._id || "", food.image || "", evt)}/>
+                  </p>
+                  <p className={styles.title}>{food.name}
+                    {food.image && <img className={styles.image_large} src={import.meta.env.VITE_CLOUDINARY_URL + food.image} alt="" />}
+                  </p>
+                </div>
               </div>
-              <Macronutrient label="Kcal" value={food.calories}/>
-              <Macronutrient label="Carbs" value={food.carbohydrates}/>
-              <Macronutrient label="Fat" value={food.fat}/>
-              <Macronutrient label="Protein" value={food.protein}/>
-              <Macronutrient label="Sat.Fat" value={food.saturatedFat}/>
-              <Macronutrient label="Sugar" value={food.sugar}/>
-              <Macronutrient label="Salt" value={food.salt}/>
-              <div className={styles.gramsWrapper}>
-                <p>g</p>
-                <input type="text" value={selectedFood[food.name || "empty"]} onChange={(evt) => handleOnChange(food.name, evt.target.value)} />
+              <div className={styles.nutrientWrapper}>
+                <div className={styles.topNutrientWrapper}>
+                  <Macronutrient label="Kcal" value={food.calories}/>
+                  <Macronutrient label="Carbs" value={food.carbohydrates}/>
+                  <Macronutrient label="Fat" value={food.fat}/>
+                  <Macronutrient label="Protein" value={food.protein}/>
+                </div>
+                <div className={styles.bottomNutrientWrapper}>
+                  <Macronutrient label="Sat.Fat" value={food.saturatedFat}/>
+                  <Macronutrient label="Sugar" value={food.sugar}/>
+                  <Macronutrient label="Salt" value={food.salt}/>
+                  <div className={styles.gramsWrapper}>
+                    <p>g</p>
+                    <input type="text" value={selectedFood[food.name || "empty"]} onChange={(evt) => handleOnChange(food.name, evt.target.value)} />
+                  </div>
+                </div>
               </div>
               <span className={styles.close} onClick={()=>handleDeleteItem(food.name)}>x</span>
             </div>

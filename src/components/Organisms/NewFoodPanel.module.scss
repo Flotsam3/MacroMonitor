@@ -7,18 +7,32 @@
     margin-top: 2em;
     width: 70%;
     border-radius: 15px;
+    @media screen and (max-width:1450px) {
+      width: 100%;
+      margin-top: 0.5rem;
+   }
     h1 {
        font-family: 'Medula One', cursive;
-       font-size: clamp(1rem, 3vw, 5rem);
+       font-size: clamp(2.5rem, 3vw, 5rem);
        font-weight: 400;
        width: 60%;
+       @media screen and (max-width:1450px) {
+         text-align: center;
+      }
     }
     .panel {
        display: flex;
        padding: 0.5em 1.5em;
        color: var.$font-light;
        border-radius: 15px;
-       width: 60%;
+       width: 70%;
+       @media screen and (max-width:1450px) {
+         width: initial;
+      }
+      @media screen and (max-width:870px) {
+         flex-direction: column;
+         gap: 10px;
+      }
        input:focus {
           outline: 3px solid var.$primary-bg;
        }
@@ -40,6 +54,13 @@
        }
        .macrosWrapper {
           display: flex;
+          @media screen and (max-width:500px) {
+            flex-direction: column;
+            gap: 10px;
+         }
+          .innerMacrosWrapper {
+            display: flex;
+          }
        }
     }
     .buttonWrapper {
@@ -47,5 +68,11 @@
        justify-content: center;
        gap: 1.5em;
        margin-top: 4em;
+       @media screen and (max-width:1500px) {
+         margin-top: 2rem;
+      }
+      @media screen and (max-width:870px) {
+         margin-top: 0.5rem;
+      }
     }
  }

@@ -56,7 +56,6 @@ export default function NewFoodPanel({handleCreateMenu}: NewFoodPanelProps): JSX
       theme: "colored",
       });
   };
-  
 
   return (
     <div className={styles.panelWrapper}>
@@ -69,12 +68,14 @@ export default function NewFoodPanel({handleCreateMenu}: NewFoodPanelProps): JSX
           </div>
           <div className={styles.macrosWrapper}>
             <MacronutrientInput label={"Kcal"} name={Nutrient.Calories} value={inputValue?.calories || ""} onChangeHandler={handleChange} />
-            <MacronutrientInput label={"Carbs"} name={Nutrient.Carbohydrates} value={inputValue?.carbohydrates || ""} onChangeHandler={handleChange}/>
-            <MacronutrientInput label={"Fat"} name={Nutrient.Fat} value={inputValue?.fat || ""} onChangeHandler={handleChange}/>
-            <MacronutrientInput label={"Protein"} name={Nutrient.Protein} value={inputValue?.protein || ""} onChangeHandler={handleChange}/>
-            <MacronutrientInput label={"Sat.fat"} name={Nutrient.SaturatedFat} value={inputValue?.saturatedFat || ""} onChangeHandler={handleChange}/>
-            <MacronutrientInput label={"Sugar"} name={Nutrient.Sugar} value={inputValue?.sugar || ""} onChangeHandler={handleChange}/>
-            <MacronutrientInput label={"Salt"} name={Nutrient.Salt} value={inputValue?.salt || ""} onChangeHandler={handleChange}/>
+            <div className={styles.innerMacrosWrapper}>
+              <MacronutrientInput label={"Carbs"} name={Nutrient.Carbohydrates} value={inputValue?.carbohydrates || ""} onChangeHandler={handleChange}/>
+              <MacronutrientInput label={"Fat"} name={Nutrient.Fat} value={inputValue?.fat || ""} onChangeHandler={handleChange}/>
+              <MacronutrientInput label={"Protein"} name={Nutrient.Protein} value={inputValue?.protein || ""} onChangeHandler={handleChange}/>
+              <MacronutrientInput label={"Sat.fat"} name={Nutrient.SaturatedFat} value={inputValue?.saturatedFat || ""} onChangeHandler={handleChange}/>
+              <MacronutrientInput label={"Sugar"} name={Nutrient.Sugar} value={inputValue?.sugar || ""} onChangeHandler={handleChange}/>
+              <MacronutrientInput label={"Salt"} name={Nutrient.Salt} value={inputValue?.salt || ""} onChangeHandler={handleChange}/>
+            </div>
           </div>
       </div>
       <div className={styles.buttonWrapper}>
@@ -83,4 +84,4 @@ export default function NewFoodPanel({handleCreateMenu}: NewFoodPanelProps): JSX
       </div>
     </div>
   )
-}
+};

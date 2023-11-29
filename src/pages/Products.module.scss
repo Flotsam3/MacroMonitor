@@ -19,12 +19,37 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position-y: -100px;
+      padding-left: 3em;
       color: var.$font-light;
       z-index: 10;
+      @media screen and (max-width:1500px) {
+         background-color: var.$secondary-bg;
+         height: 20rem;
+         min-height: 410px;
+         padding-left: 0;;
+      }
+      @media screen and (max-width:870px) {
+         // min-height: 470px;
+         position: initial;
+      }
+      @media screen and (max-width:500px) {
+         min-height: 470px;
+      }
       .banana {
          position: absolute;
          top:15%;
          right: 10%;
+         @media screen and (max-width:1500px) {
+            top: 60%;
+            width: 200px;
+         }
+         @media screen and (max-width:1070px) {
+            width: 120px;
+            top: 70%;
+         }
+         @media screen and (max-width:870px) {
+            display: none;
+         }
       }
       .addButtonWrapper {
          display: flex;
@@ -49,7 +74,14 @@
    }
    .outerPanelWrapper {
       margin-top: 68vmin;
+      @media screen and (max-width:1500px) {
+         margin-top: 58vh;
+      }
+      @media screen and (max-width:870px) {
+         margin-top: 1em;
+      }
       .productPanelWrapper {
+         position: relative;
          display: flex;
          gap: 1em;
          margin-top: 0.5em;
@@ -57,6 +89,12 @@
          background-color: var.$secondary-bg;
          color: white;
          border-radius: 10px;
+         @media screen and (max-width:1200px) {
+            font-size: 0.8rem;
+         }
+         @media screen and (max-width:800px) {
+            flex-direction: column;
+         }
          .imageWrapper {
             display: flex;
             gap: 10px;
@@ -64,6 +102,7 @@
             .image {
                position: relative;
                width: 3.5rem;
+               height: 3.5rem;
                aspect-ratio: 1;
                background-color: #474654;
                border-radius: 5px;
@@ -104,28 +143,45 @@
                transition: 1s ease;
             }
          }
-         .gramsWrapper {
+         .nutrientWrapper {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            width: 5em;
-            input {
-               width: 2.7em;
-               padding: 0.4em 0.5em;
-               background-color: var.$primary-bg;
-               color: white;
-               text-align: center;
-               border-radius: 99vh;
-               border: none;
-               outline: none;
+            @media screen and (max-width:590px) {
+               flex-direction: column;
+               gap: 10px;
             }
-            input:focus {
-               outline: 3px solid #474654;
+            .topNutrientWrapper {
+               display: flex;
+               gap: 5px;
+            }
+            .bottomNutrientWrapper {
+               display: flex;
+               gap: 5px;
+               .gramsWrapper {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 10px;
+                  width: 5em;
+                  input {
+                     width: 2.7em;
+                     padding: 0.4em 0.5em;
+                     background-color: var.$primary-bg;
+                     color: white;
+                     text-align: center;
+                     border-radius: 99vh;
+                     border: none;
+                     outline: none;
+                  }
+                  input:focus {
+                     outline: 3px solid #474654;
+                  }
+               }
             }
          }
          .close {
+            position: absolute;
+            inset: 5px 5px auto auto;
             display: flex;
             justify-content: center;
             align-items: center;
