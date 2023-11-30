@@ -48,12 +48,12 @@ export default function Archive() {
   return (
       <div className={styles.archive}>
         <div className={styles.archiveHeader}>
-          <img src={pasta} alt="A plate with uncooked pasta" />
-        </div>
+          <img className={styles.archiveImage} src={pasta} alt="A plate with uncooked pasta" />
         <Navigation />
         <h1>Archive</h1>
         <div className={styles.buttonWrapper}>
           <Button label="Reset" appearance="typeA" onClick={resetArchive}/>
+        </div>
         </div>
         <div className={styles.outerPanelWrapper}>
           {archive?.map((obj, index)=>(
@@ -62,6 +62,7 @@ export default function Archive() {
                 <p className={styles.date}>{formatDate(obj.date || "")}</p>
                 <p className={styles.grams}>{obj.grams}</p>
               </div>
+              <div className={styles.macrosWrapper}>
                 <Macronutrient label="Kcal" value={obj.calories} />
                 <Macronutrient label="Carbs" value={obj.carbohydrates} />
                 <Macronutrient label="Fat" value={obj.fat} />
@@ -69,6 +70,7 @@ export default function Archive() {
                 <Macronutrient label="Sat.fat" value={obj.saturatedFat} />
                 <Macronutrient label="Sugar" value={obj.sugar} />
                 <Macronutrient label="Salt" value={obj.salt} />
+              </div>
                 <span className={styles.close} onClick={()=>deleteItem(obj._id || "")}>x</span>
             </div>
           ))}
