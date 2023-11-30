@@ -12,12 +12,12 @@
         background-image: url("../assets/images/Vector_2.svg");
         background-repeat: no-repeat;
         background-size: cover;
-        z-index: -1;
         @media screen and (max-width:1400px) {
             position: initial;
             background-image: none;
             background-color: var.$secondary-bg;
             height: 27vmax;
+            padding: 0 20px;
         }
         .archiveImage {
             position: absolute;
@@ -27,6 +27,9 @@
             @media screen and (max-width:1400px) {
                 top: 10%;
                 width: 15%;
+            }
+            @media screen and (max-width:570px) {
+                display: none;
             }
         }
         h1 {
