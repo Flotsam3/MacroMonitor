@@ -1,7 +1,7 @@
 @use "../../assets/variables.scss" as var;
 
 button {
-    font-size: clamp(1rem, 1.3vw, 2.3rem);
+    font-size: clamp(0.8rem, 1.3vw, 2.3rem);
     color: var.$font-light;
     border: none;
     border-radius: 99vh;

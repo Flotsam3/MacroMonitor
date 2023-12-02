@@ -153,7 +153,9 @@ export default function Products() {
   return (
     <div className={styles.products}>
         <div className={styles.inputWrapper}>
-          <Navigation />
+          <div className={styles.navWrapper}>
+            <Navigation />
+          </div>
           <NewFoodPanel handleCreateMenu={handleCreateMenu}/>
           <img className={styles.banana} src={banana} alt="A half peeled banana" />
           <div className={styles.addButtonWrapper}>

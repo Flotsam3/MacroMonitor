@@ -8,10 +8,13 @@
     width: 5rem;
     color: white;
     @media screen and (max-width:670px) {
-        width: 3.5rem;
-      }
+        width: 3rem;
+    }
     .title {
         font-size: 0.9rem;
+        @media screen and (max-width:670px) {
+            font-size: 0.7rem;
+        }
      }
      span {
         font-size: 0.7rem;
@@ -21,6 +24,10 @@
         height: 2rem;
         background-color: var.$panel-bg-secondary-1;
         border-radius: 0 0 15px 15px;
+        @media screen and (max-width:670px) {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
     .cupGreen {
         background-color: var.$primary-bg;

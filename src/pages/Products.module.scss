@@ -8,7 +8,6 @@
    padding-bottom: 2em;
    .inputWrapper {
       position: fixed;
-      // top: -100px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -21,7 +20,6 @@
       background-size: contain;
       background-position: center;
       background-position-y: -100px;
-      padding-left: 3em;
       color: var.$font-light;
       z-index: 10;
       @media screen and (max-width:1500px) {
@@ -29,14 +27,19 @@
          background-color: var.$secondary-bg;
          height: 20rem;
          min-height: 410px;
-         // padding-left: 0;
       }
       @media screen and (max-width:870px) {
-         // min-height: 470px;
          position: initial;
       }
       @media screen and (max-width:500px) {
          min-height: 470px;
+      }
+      .navWrapper {
+         width: 100%;
+         padding-left: 8%;
+         @media screen and (max-width:1500px) {
+            padding-left: 0;
+         }
       }
       .banana {
          position: absolute;

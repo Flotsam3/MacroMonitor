@@ -32,7 +32,8 @@
             margin-top: 2em;
          }
          @media screen and (max-width:1049px) {
-            width: 50%;
+            width: 100%;
+            margin: 5em 0 0 0;
          }
          > img {
             position: absolute;
@@ -117,7 +118,7 @@ h2.consumption {
       margin-top: 20rem;
    }
    @media screen and (max-width:1049px) {
-      margin-top: 26rem;
+      margin-top: 23rem;
    }
 }
 
