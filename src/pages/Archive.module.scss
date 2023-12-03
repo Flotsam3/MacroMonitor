@@ -17,7 +17,9 @@
             background-image: none;
             background-color: var.$secondary-bg;
             height: 27vmax;
-            padding: 0 20px;
+        }
+        @media screen and (max-width:570px) {
+            height: 15vmax;
         }
         .archiveImage {
             position: absolute;
