@@ -50,14 +50,14 @@ export default function Options() {
         </div>
         <h1>Options</h1>
         <h2>Limit values</h2>
-        {validationError && <p className={styles.errorMessage}>{validationError}</p>}
-        <OptionItem label="Calories" placeholder="g" name={Nutrient.Calories} gramValue={options?.calories} value={inputValue?.calories} onChangeHandler={handleInputChange}/>
-        <OptionItem label="Carbohydrates"placeholder="%" name={Nutrient.Carbohydrates} gramValue={options?.carbohydrates} value={inputValue?.carbohydrates} calculated={options?.calories && (options?.carbohydrates * 4 / options?.calories).toFixed(2)} onChangeHandler={handleInputChange}/>
-        <OptionItem label="Fat" placeholder="%" name={Nutrient.Fat} gramValue={options?.fat} value={inputValue?.fat} calculated={options?.calories && (options?.fat * 9 / options?.calories).toFixed(2)} onChangeHandler={handleInputChange}/>
-        <OptionItem label="Protein" placeholder="%" name={Nutrient.Protein} gramValue={options?.protein} value={inputValue?.protein} calculated={options?.calories && (options?.protein * 4 / options?.calories).toFixed(2)} onChangeHandler={handleInputChange}/>
-        <OptionItem label="Saturated fat" placeholder="%" name={Nutrient.SaturatedFat} gramValue={options?.saturatedFat} value={inputValue?.saturatedFat} calculated={options?.calories && (options?.saturatedFat * 9 / options?.calories).toFixed(2)} onChangeHandler={handleInputChange}/>
-        <OptionItem label="Sugar" placeholder="%" name={Nutrient.Sugar} gramValue={options?.sugar} value={inputValue?.sugar} calculated={options?.calories && (options?.sugar * 4 / options?.calories).toFixed(2)} onChangeHandler={handleInputChange}/>
-        <OptionItem label="Salt" placeholder="g" name={Nutrient.Salt} gramValue={options?.salt} value={inputValue?.salt} onChangeHandler={handleInputChange}/>
+          {validationError && <p className={styles.errorMessage}>{validationError}</p>}
+          <OptionItem label="Calories" placeholder="g" name={Nutrient.Calories} gramValue={options?.calories} value={inputValue?.calories} onChangeHandler={handleInputChange}/>
+          <OptionItem label="Carbohydrates"placeholder="%" name={Nutrient.Carbohydrates} gramValue={options?.carbohydrates} value={inputValue?.carbohydrates} calculated={options?.calories && (options?.carbohydrates * 4 / options?.calories).toFixed(2)} onChangeHandler={handleInputChange}/>
+          <OptionItem label="Fat" placeholder="%" name={Nutrient.Fat} gramValue={options?.fat} value={inputValue?.fat} calculated={options?.calories && (options?.fat * 9 / options?.calories).toFixed(2)} onChangeHandler={handleInputChange}/>
+          <OptionItem label="Protein" placeholder="%" name={Nutrient.Protein} gramValue={options?.protein} value={inputValue?.protein} calculated={options?.calories && (options?.protein * 4 / options?.calories).toFixed(2)} onChangeHandler={handleInputChange}/>
+          <OptionItem label="Saturated fat" placeholder="%" name={Nutrient.SaturatedFat} gramValue={options?.saturatedFat} value={inputValue?.saturatedFat} calculated={options?.calories && (options?.saturatedFat * 9 / options?.calories).toFixed(2)} onChangeHandler={handleInputChange}/>
+          <OptionItem label="Sugar" placeholder="%" name={Nutrient.Sugar} gramValue={options?.sugar} value={inputValue?.sugar} calculated={options?.calories && (options?.sugar * 4 / options?.calories).toFixed(2)} onChangeHandler={handleInputChange}/>
+          <OptionItem label="Salt" placeholder="g" name={Nutrient.Salt} gramValue={options?.salt} value={inputValue?.salt} onChangeHandler={handleInputChange}/>
         <div className={styles.buttonWrapper}>
             <Button label="Save" type="submit" appearance="typeB" onClick={handleClick}/>
         </div>

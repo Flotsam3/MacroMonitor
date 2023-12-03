@@ -2,13 +2,19 @@
 
 .valueWrapper {
     display: flex;
-    justify-content: space-between;
-    width: 30%;
-    min-width: 500px;
+    justify-content: center;
+    width: 75%;
     padding: 0.3em 0;
-    font-size: 1.5rem;
+    font-size: clamp(0.8rem, 1.8vw, 1.5rem);
+    p {
+      width: 250px;
+       @media screen and (max-width: 1000px) {
+         width: 150px;
+      }
+    }
     .inputWrapper {
       display: flex;
+      justify-content: center;
       align-items: center;
       gap: 0.5em;
       p {
@@ -16,6 +22,9 @@
          font-size: 0.8rem;
          color: var.$primary-bg;
          text-align: right;
+         @media screen and (max-width: 1000px) {
+            width: 2em;
+         }
       }
       input {
           width: 20%;
@@ -26,6 +35,9 @@
           border: none;
           border-radius: 99vh;
           outline: none;
+          @media screen and (max-width: 700px) {
+            width: 10%;
+          }
        }
        input:focus {
           background-color: var.$primary-bg;

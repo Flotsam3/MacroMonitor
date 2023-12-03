@@ -1,6 +1,6 @@
 import { Options } from "../context/OptionContext";
 
-const URL:string = "https://macromonitor-backend.onrender.com";
+const URL:string = "http://localhost:5000";
 
 export const createOptions = async(payload:object)=>{
     const response = await fetch(URL + "/options",{
