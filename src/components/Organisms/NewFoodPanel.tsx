@@ -35,6 +35,7 @@ export default function NewFoodPanel({handleCreateMenu}: NewFoodPanelProps): JSX
       if (inputValue.calories === "" || inputValue.carbohydrates === "" || inputValue.fat === "" || inputValue.protein === "" || inputValue.saturatedFat === "" || inputValue.sugar === "" || inputValue.salt === "") return handleValidationError("All fields must have a value!")
       console.log("passed validation");
       const response = await createFood(inputValue);
+      if (response.errors) return handleValidationError(response.errors[0].msg);
       setInputValue({name:"", calories:"", carbohydrates:"", fat:"", protein:"", saturatedFat:"", sugar:"", salt:""});
       const data = await getAllFood();
       if (setFoodData){
