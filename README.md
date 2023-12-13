@@ -1,4 +1,5 @@
 # MacroMonitor
+![macroMonitor](https://github.com/Flotsam3/MacroMonitor/assets/58853799/3558b89e-1b16-4db2-80e0-11afb0c40446)
 
 ## What is it?
 
@@ -27,7 +28,7 @@ Once done you can continue by filling up the database with food items of your ch
 Get the correct values from the product package itself or the internet. To record your daily consumption you can enter the proper 
 grams for each food item and conclude by clicking on the `+` button.
 
-Move over to the `consumption` section to see the list of added food items along with the summarized calories and macros.
+Move over to the `balance` section to see the list of added food items along with the summarized calories and macros.
 At this place, if you want, you can also store your daily consumption in the `archive` for future reference.
 
 ## Technology
