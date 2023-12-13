@@ -33,6 +33,6 @@ At this place, if you want, you can also store your daily consumption in the `ar
 
 ## Technology
 
-**Frontend**: React with Vite, Typescript, SCSS.  
+**Frontend**: React with Vite, Typescript, SCSS, Toastify for message handling.  
 **Backend**: Express, MongoDB, Mongoose, Cloudinary for image uploads.  
 **Layout**: Figma
