@@ -1,27 +1,37 @@
-# React + TypeScript + Vite
+# MacroMonitor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What is it?
 
-Currently, two official plugins are available:
+Like the name already indicates, this app is aiming to help you keeping track of your daily food consumption. It allows you to
+record calories and macronutrients on a daily basis. By defining your individual threshold values, the app enables you to
+keep an overview wheather your food intake meets your own requirements and supports a healthy lifestyle.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can build up your own database by entering single food items or combining multiple food items to create a menu. The upload
+of images for each item to the **cloudinary** service is supported.
 
-## Expanding the ESLint configuration
+## Installation & Usage
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+You need a (free) cloudinary account set up in order to use this app.  
+- Create your `.env` file from the `.env.sample`. This step is necessary twice, for frontend and backend!
+- For "VITE_CLOUDINARY_URL" you need to enter the public link, where your images are going to be stored at cloudinary
+- To start the frontend part run `npm i` followed by `npm run dev` in the root folder  
+- Navigate to the backend folder, run `npm i` and `npm start` to get the server running
 
-- Configure the top-level `parserOptions` property like this:
+## Details
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+The first thing you probably want to do is, set up your custom threshold values. You can do so by clicking on the `cog wheel`.
+You'll see there are already predefined values, these are mostly recommendations from the ***Deutsche Gesellschaft
+für Ernährung e.V. (DGE)***. You can leave them as they are or configure the values according to your requirements.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Once done you can continue by filling up the database with food items of your choice. This is happening in the `products` section.
+Get the correct values from the product package itself or the internet. To record your daily consumption you can enter the proper 
+grams for each food item and conclude by clicking on the `+` button.
+
+Move over to the `consumption` section to see the list of added food items along with the summarized calories and macros.
+At this place, if you want, you can also store your daily consumption in the `archive` for future reference.
+
+## Technology
+
+**Frontend**: React with Vite, Typescript, SCSS.  
+**Backend**: Express, MongoDB, Mongoose, Cloudinary for image uploads.  
+**Layout**: Figma
