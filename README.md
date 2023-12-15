@@ -1,5 +1,5 @@
 # MacroMonitor
-![macroMonitor](https://github.com/Flotsam3/MacroMonitor/assets/58853799/3558b89e-1b16-4db2-80e0-11afb0c40446)
+<img src="https://github.com/Flotsam3/MacroMonitor/assets/58853799/3558b89e-1b16-4db2-80e0-11afb0c40446" width=800 />
 
 ## What is it?
 
