@@ -17,10 +17,10 @@ const PORT = process.env.PORT;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json({ limit: '10mb' }));
 app.use(express_1.default.urlencoded({ extended: true }));
-app.use("/", foodRouter_1.default);
-app.use("/", optionsRouter_1.default);
-app.use("/", consumptionRouter_1.default);
-app.use("/", archiveRouter_1.default);
+app.use("/api/", foodRouter_1.default);
+app.use("/api/", optionsRouter_1.default);
+app.use("/api/", consumptionRouter_1.default);
+app.use("/api/", archiveRouter_1.default);
 app.listen(PORT, () => {
     console.log(`Server is listening on port: ${PORT}`);
 });

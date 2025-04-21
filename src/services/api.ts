@@ -1,6 +1,6 @@
 import { Options } from "../context/OptionContext";
 
-const URL:string = "https://macromonitor-backend.onrender.com";
+const URL:string = import.meta.env.VITE_API_URL || "/api";
 
 export const createOptions = async(payload:object)=>{
     const response = await fetch(URL + "/options",{

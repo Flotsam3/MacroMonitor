@@ -25,9 +25,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const food = __importStar(require("../controllers/nutrientsController"));
+const newProductSchema_1 = require("../schemas/newProductSchema");
+const schema_validation_1 = require("../middleware/schema-validation");
 const foodRouter = (0, express_1.Router)();
 foodRouter
-    .post("/food", food.createFood)
+    .post("/food", newProductSchema_1.productSchema, schema_validation_1.validateSchema, food.createFood)
     .get("/food", food.getAllFood)
     .put("/food/images/:id", food.uploadImage)
     .delete("/food", food.deleteFoodItem);
