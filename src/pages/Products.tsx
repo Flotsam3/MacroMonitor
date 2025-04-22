@@ -29,16 +29,21 @@ export default function Products() {
       };
     };
 
-    const getFood = async()=>{
+    const getFood = async () => {
       const data = await getAllFood();
-      if(setFoodData){
-        setFoodData(data);
-      };
+      console.log({ data });
+    
+      if (data) {
+        setFoodData?.(data); 
+      } else {
+        console.warn("Failed to fetch food data");
+      }
     };
-    return ()=>{
-      fetchOptions();
-      getFood();      
-    };
+
+    fetchOptions();
+    getFood();      
+    // return ()=>{
+    // };
   },[]);
 
   useEffect(()=>{
