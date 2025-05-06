@@ -106,6 +106,9 @@
             width: 15em;
             .image {
                position: relative;
+               display: flex;
+               justify-content: center;
+               align-items: center;
                width: 3.5rem;
                height: 3.5rem;
                aspect-ratio: 1;
